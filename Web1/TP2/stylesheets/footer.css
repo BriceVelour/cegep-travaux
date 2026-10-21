@@ -1,0 +1,19 @@
+footer { 
+  text-align: left; 
+  padding: 10px 20px; 
+  font-size: 12px; 
+  color: #999; 
+  width: calc(100% - 20px); 
+  background-color: #f6f6f6; 
+  position: absolute; 
+  bottom: 0; 
+  left: 10px;
+}
+footer a { 
+  color: #999; 
+  text-decoration: underline;
+}
+footer a:hover { 
+  color: #007c89; 
+  text-decoration: underline;
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYNX+ - Découvrez notre gamme de produits cosmétiques haut de gamme, naturels et innovants">
+    <title>LYNX+ | Nos Produits</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">LYNX+</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="navbarOffcanvasLabel">LYNX+</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="produits.html">Produits</a></li>
+                            <li class="nav-item"><a class="nav-link" href="panier.html">Panier <span id="cart-counter" class="badge rounded-pill bg-gold">0</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Paiement</a></li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+                            <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="produits" class="container-xl py-5 mt-4">
+        <h1 class="section-title text-center">Nos Produits</h1>
+        <div class="separator mx-auto"></div>
+        <div class="filter-container text-center mb-5">
+            <div class="btn-group" role="group" aria-label="Filtres de produits">
+                <button type="button" class="btn filter-btn active" data-filter="tous">Tous</button>
+                <button type="button" class="btn filter-btn" data-filter="peau">Peau</button>
+                <button type="button" class="btn filter-btn" data-filter="cheveux">Cheveux</button>
+            </div>
+        </div>
+        
+        <div class="row g-4" id="product-grid">
+            <div class="col-md-4 mb-4 product-item" data-category="peau">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Sérum LUMINA">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Sérum LUMINA</h3>
+                        <p class="card-text flex-grow-1">Un sérum illuminateur enrichi en vitamine C et acide hyaluronique pour un teint éclatant et unifié.</p>
+                        <p class="price">89,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-1" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-1" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="1" 
+                            data-name="Sérum LUMINA" 
+                            data-price="89.00" 
+                            data-image="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="peau">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 product-item" data-category="peau">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1601612628452-9e99ced43524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Brume VITA">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Brume VITA</h3>
+                        <p class="card-text flex-grow-1">Une brume hydratante et revitalisante aux extraits de plantes adaptogènes pour rafraîchir et tonifier la peau.</p>
+                        <p class="price">65,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-2" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-2" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="2" 
+                            data-name="Brume VITA" 
+                            data-price="65.00" 
+                            data-image="https://images.unsplash.com/photo-1601612628452-9e99ced43524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="peau">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 product-item" data-category="peau">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1598662972299-5408ddb8a3dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Masque TERRA">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Masque TERRA</h3>
+                        <p class="card-text flex-grow-1">Un masque purifiant à l'argile verte et aux extraits botaniques qui détoxifie la peau en profondeur tout en préservant son équilibre naturel.</p>
+                        <p class="price">75,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-4" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-4" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="4" 
+                            data-name="Masque TERRA" 
+                            data-price="75.00" 
+                            data-image="https://images.unsplash.com/photo-1598662972299-5408ddb8a3dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="peau">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 product-item" data-category="cheveux">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Shampooing VELVET">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Shampooing VELVET</h3>
+                        <p class="card-text flex-grow-1">Un shampooing doux enrichi en protéines de soie et huile d'argan qui nettoie en profondeur tout en préservant l'hydratation naturelle des cheveux.</p>
+                        <p class="price">68,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-7" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-7" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="7" 
+                            data-name="Shampooing VELVET" 
+                            data-price="68.00" 
+                            data-image="https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="cheveux">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 product-item" data-category="cheveux">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1631730359585-38a4935cbec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Masque SATIN">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Masque SATIN</h3>
+                        <p class="card-text flex-grow-1">Un masque capillaire intensif à la kératine et beurre de karité qui répare et nourrit les cheveux secs et abîmés pour une douceur incomparable.</p>
+                        <p class="price">85,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-8" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-8" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="8" 
+                            data-name="Masque SATIN" 
+                            data-price="85.00" 
+                            data-image="https://images.unsplash.com/photo-1631730359585-38a4935cbec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="cheveux">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4 product-item" data-category="cheveux">
+                <div class="card product-card rounded-4 h-100">
+                    <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Sérum GLOSS">
+                    <div class="card-body text-center d-flex flex-column">
+                        <h3 class="card-title">Sérum GLOSS</h3>
+                        <p class="card-text flex-grow-1">Un sérum capillaire léger aux huiles précieuses qui apporte brillance et douceur aux cheveux tout en domptant les frisottis.</p>
+                        <p class="price">78,00 $ CAD</p>
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                            <label for="qty-9" class="visually-hidden">Quantité</label>
+                            <input type="number" id="qty-9" class="form-control qty-input mx-2" value="1" min="1" max="10" style="width: 80px;">
+                        </div>
+                        <button class="btn add-to-cart-btn" 
+                            data-id="9" 
+                            data-name="Sérum GLOSS" 
+                            data-price="78.00" 
+                            data-image="https://images.unsplash.com/photo-1599305090598-fe179d501227?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                            data-category="cheveux">
+                            <i class="bi bi-bag-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast-panier" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check2-circle"></i> Produit ajouté au panier.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-logo">LYNX+</h3>
+                    <p>Beauté réinventée, naturellement luxueuse.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="panier.html">Panier</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h4>Restez informé</h4>
+                    <p>Inscrivez-vous à notre newsletter pour recevoir nos actualités et offres exclusives.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre adresse email" aria-label="Email" aria-describedby="newsletter-submit">
+                            <button class="btn newsletter-btn" type="submit" id="newsletter-submit">S'inscrire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="copyright">&copy; 2024 LYNX+ Cosmétiques. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cerveau/cerveau.js"></script>
+</body>
+</html>

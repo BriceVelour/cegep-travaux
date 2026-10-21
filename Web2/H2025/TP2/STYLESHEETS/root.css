@@ -1,0 +1,17 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: white;
+}
+
+:root {
+  --primary-color: #d4af37;
+  --secondary-color: #b8860b;
+  --background-color: #121212;
+  --text-color: white;
+  --hover-color: #d4af37;
+  --input-background: #ffffff;
+  --input-text-color: black;
+}

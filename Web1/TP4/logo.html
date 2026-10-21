@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vidéo de Présentation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="side-menu">
+      <div class="logo-container">
+        <a href="logo.html">
+          <img src="https://blancetnoircondosneufs.ca/assets/img/logo.svg" alt="Logo de Black & White Condos" class="logo" />
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="Open Menu">
+        <span class="hamburger"></span>
+      </button>
+      <ul>
+        <li>
+          <a href="index.html"><span class="bar"></span>PROJETS ACTUELS</a>
+        </li>
+        <li>
+          <a href="projets-termines.html"><span class="bar"></span>PROJETS TERMINÉS</a>
+        </li>
+        <li>
+          <a href="connexion.html"><span class="bar"></span>CONNEXION</a>
+        </li>
+        <li>
+          <a href="à propos.html"><span class="bar"></span>À PROPOS</a>
+        </li>
+        <li>
+          <a href="commercial.html"><span class="bar"></span>COMMERCIAL</a>
+        </li>
+      </ul>
+      <div class="menu-bottom">
+        <p>Contactez-nous :</p>
+        <p><a href="tel:+14189294474">+1 418 929 4474</a></p>
+        <p><a href="mailto:blancetnoir@royallepage.ca">blancetnoir@royallepage.ca</a></p>
+        <p>1291 Jules-Verne, Suite #102,<br />L'Ancienne-Lorette, QC G2E 6L6</p>
+        <!-- Ajout des icônes sociales -->
+        <div class="social-media">
+          <a href="https://www.linkedin.com" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect width="4" height="12" x="2" y="9"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Vidéo de présentation avec bouton -->
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="IMAGE & VIDEO/videoplayback.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+      <a href="index.html" class="discover-button">DÉCOUVRIR</a>
+    </div>
+
+    <script>
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.side-menu ul').classList.toggle('active');
+      });
+    </script>
+  </body>
+</html>

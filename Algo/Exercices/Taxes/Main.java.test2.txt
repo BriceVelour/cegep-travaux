@@ -1,0 +1,18 @@
+package com.cegepst;
+
+public class Main {
+    public static void main(String[] args){
+        double PrixInitial = 5.99;
+        double TPS = PrixInitial*0.05;
+        double TVQ = PrixInitial*0.09975;
+        double PrixTotal = PrixInitial + TPS + TVQ;
+        String Prix = "Prix Initial = 5.99";
+        String Taxe = "TPS = ";
+        String Taxe2 = "TVQ = ";
+        String Prix1 = "Prix Total = ";
+        System.out.println(Prix);
+        System.out.println(Taxe+TPS);
+        System.out.println(Taxe2+TVQ);
+        System.out.println(Prix1+PrixTotal);
+    }
+}

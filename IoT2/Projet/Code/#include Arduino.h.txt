@@ -1,0 +1,361 @@
+#include <Arduino.h>
+#include <DHT.h>
+#include <Adafruit_NeoPixel.h>
+#include <WiFi.h>
+#include <WiFiClientSecure.h>
+#include <PubSubClient.h>
+#define DHT_PIN      15
+#define DHT_TYPE     DHT11
+#define LDR_PIN      35   
+#define NEO_PIN      13
+#define NEO_COUNT    8
+#define BUZZER_PIN   12
+
+DHT dht(DHT_PIN, DHT_TYPE);
+Adafruit_NeoPixel ring(NEO_COUNT, NEO_PIN, NEO_GRB + NEO_KHZ800);
+
+int LUX_DARK_ENTER = 2400;
+int LUX_DARK_EXIT  = 2000;
+
+float TEMP_HOT_ENTER = 28.0;
+float TEMP_HOT_EXIT  = 26.5;
+
+float HUMID_HIGH_ENTER = 65.0;
+float HUMID_HIGH_EXIT  = 60.0;
+
+const unsigned long SENSOR_PERIOD_MS = 800;
+const unsigned long PRINT_PERIOD_MS  = 1200;
+const unsigned long ALERT_COOLDOWN_MS = 12000;
+
+enum class Mode : uint8_t { NORMAL, DARK, HOT, HUMID };
+Mode currentMode = Mode::NORMAL;
+Mode lastMode = Mode::NORMAL;
+
+int luxRaw = 0;
+float tempC = NAN;
+float humPct = NAN;
+
+static const int LUX_WINDOW = 8;
+int luxBuffer[LUX_WINDOW];
+int luxIndex = 0;
+bool luxFilled = false;
+
+int luxAvg() {
+  int n = luxFilled ? LUX_WINDOW : luxIndex;
+  if (n <= 0) return luxRaw;
+  long sum = 0;
+  for (int i = 0; i < n; i++) sum += luxBuffer[i];
+  return (int)(sum / n);
+}
+
+void setAll(uint32_t color) {
+  for (int i = 0; i < NEO_COUNT; i++) ring.setPixelColor(i, color);
+  ring.show();
+}
+
+void setBrightnessFromLux(int lux) {
+  int b = map(lux, 0, 4095, 40, 255);
+  b = constrain(b, 40, 255);
+  ring.setBrightness(b);
+  ring.show();
+}
+
+struct NoteStep {
+  int freq;
+  uint16_t durMs;
+  uint32_t color;
+};
+
+#define A4  440
+#define C5  523
+#define D5  587
+#define E5  659
+#define G5  784
+#define A5  880
+
+const NoteStep THEME_STEPS[] = {
+  {A4, 200, 0}, {E5, 200, 0}, {G5, 240, 0}, {E5, 200, 0}, {D5, 180, 0}, {C5, 180, 0}, {A4, 300, 0},
+  {0,  150, 0},
+  {A4, 200, 0}, {C5, 180, 0}, {D5, 200, 0}, {E5, 220, 0}, {G5, 260, 0}, {E5, 200, 0}, {D5, 250, 0},
+  {0,  200, 0},
+  {A5, 220, 0}, {G5, 200, 0}, {E5, 220, 0}, {D5, 180, 0}, {C5, 200, 0}, {A4, 400, 0},
+};
+const int THEME_LEN = sizeof(THEME_STEPS) / sizeof(THEME_STEPS[0]);
+
+bool themeRunning = false;
+int themePos = 0;
+unsigned long themeStepUntil = 0;
+
+uint32_t colorForFreq(int f) {
+  if (f == A5) return ring.Color(255, 255, 255);
+  if (f == G5) return ring.Color(255, 40, 40);
+  if (f == E5) return ring.Color(200, 0, 80);
+  if (f == D5) return ring.Color(150, 0, 50);
+  if (f == C5) return ring.Color(100, 0, 40);
+  if (f == A4) return ring.Color(80, 0, 0);
+  return ring.Color(120, 0, 60);
+}
+
+void themeStart() {
+  themeRunning = true;
+  themePos = 0;
+  themeStepUntil = 0;
+}
+
+void themeStop() {
+  themeRunning = false;
+  noTone(BUZZER_PIN);
+  setAll(0);
+}
+
+void themeTick() {
+  if (!themeRunning) return;
+
+  unsigned long now = millis();
+  if (themeStepUntil != 0 && now < themeStepUntil) return;
+
+  if (themePos >= THEME_LEN) {
+    themeStop();
+    return;
+  }
+
+  NoteStep step = THEME_STEPS[themePos++];
+  if (step.freq == 0) {
+    noTone(BUZZER_PIN);
+    setAll(0);
+  } else {
+    uint32_t col = colorForFreq(step.freq);
+    setAll(col);
+    tone(BUZZER_PIN, step.freq);
+  }
+
+  themeStepUntil = now + step.durMs;
+}
+
+unsigned long lastAlertAt = 0;
+
+bool canAlertNow() {
+  return (millis() - lastAlertAt) > ALERT_COOLDOWN_MS;
+}
+
+void chirp(int f1, int d1, int f2, int d2) {
+  lastAlertAt = millis();
+  tone(BUZZER_PIN, f1); delay(d1);
+  tone(BUZZER_PIN, f2); delay(d2);
+  noTone(BUZZER_PIN);
+}
+
+bool isHot(float t)   { return !isnan(t) && t >= TEMP_HOT_ENTER; }
+bool isHumid(float h) { return !isnan(h) && h >= HUMID_HIGH_ENTER; }
+
+Mode decideMode(int lux, float t, float h) {
+  if (lux >= LUX_DARK_ENTER) return Mode::DARK;
+  if (isHot(t)) return Mode::HOT;
+  if (isHumid(h)) return Mode::HUMID;
+  return Mode::NORMAL;
+}
+
+bool shouldExitHot(float t)   { return isnan(t) ? true : (t <= TEMP_HOT_EXIT); }
+bool shouldExitHumid(float h) { return isnan(h) ? true : (h <= HUMID_HIGH_EXIT); }
+bool shouldExitDark(int lux)  { return lux <= LUX_DARK_EXIT; }
+
+void applyMode(Mode m, int lux, float t, float h) {
+  setBrightnessFromLux(lux);
+
+  switch (m) {
+    case Mode::NORMAL:
+      setAll(ring.Color(0, 120, 0));
+      noTone(BUZZER_PIN);
+      break;
+
+    case Mode::DARK:
+      setAll(ring.Color(0, 0, 255));
+      break;
+
+    case Mode::HOT:
+      setAll(ring.Color(255, 60, 0));
+      if (canAlertNow()) chirp(1200, 120, 900, 160);
+      break;
+
+    case Mode::HUMID:
+      setAll(ring.Color(0, 255, 255));
+      if (canAlertNow()) chirp(700, 140, 560, 180);
+      break;
+  }
+}
+
+unsigned long lastSensorAt = 0;
+unsigned long lastPrintAt  = 0;
+
+void readSensors() {
+  luxRaw = analogRead(LDR_PIN);
+
+  luxBuffer[luxIndex++] = luxRaw;
+  if (luxIndex >= LUX_WINDOW) {
+    luxIndex = 0;
+    luxFilled = true;
+  }
+
+  float h = dht.readHumidity();
+  float t = dht.readTemperature();
+  if (!isnan(h) && !isnan(t)) {
+    humPct = h;
+    tempC  = t;
+  }
+}
+
+const char* modeName(Mode m) {
+  switch (m) {
+    case Mode::NORMAL: return "normal";
+    case Mode::DARK:   return "dark";
+    case Mode::HOT:    return "hot";
+    case Mode::HUMID:  return "humid";
+  }
+  return "unknown";
+}
+
+void buildJson(char* out, size_t outSize, int lux) {
+  String tStr = isnan(tempC) ? "null" : String(tempC, 1);
+  String hStr = isnan(humPct) ? "null" : String(humPct, 1);
+
+  snprintf(out, outSize,
+    "{ \"temp_c\": %s, \"hum_pct\": %s, \"lux_raw\": %d, \"lux_avg\": %d, \"mode\": \"%s\" }",
+    tStr.c_str(), hStr.c_str(), luxRaw, lux, modeName(currentMode)
+  );
+}
+
+void printJson(int lux) {
+  char payload[200];
+  buildJson(payload, sizeof(payload), lux);
+  Serial.println(payload);
+}
+
+const char* WIFI_SSID = "********";
+const char* WIFI_PASS = "********";
+
+const char* MQTT_HOST = "f0b66236ba314325bcc00d6816612a7d.s1.eu.hivemq.cloud";
+const uint16_t MQTT_PORT = 8883;
+const char* MQTT_USER = "bricevelour";
+const char* MQTT_PASS = "";
+
+const char* TOPIC_TELEMETRY = "bricevelour/meteo/telemetry";
+const char* TOPIC_STATUS    = "bricevelour/meteo/status";
+const char* TOPIC_CMD       = "bricevelour/meteo/cmd";
+
+WiFiClientSecure tlsClient;
+PubSubClient mqtt(tlsClient);
+
+unsigned long lastMqttAt = 0;
+const unsigned long MQTT_PERIOD_MS = 1500;
+
+void onMqttMessage(char* topic, byte* payload, unsigned int length) {
+  String msg;
+  for (unsigned int i = 0; i < length; i++) msg += (char)payload[i];
+  msg.trim();
+
+  if (msg == "theme") themeStart();
+  if (msg == "theme_off") themeStop();
+  if (msg == "beep") { tone(BUZZER_PIN, 1200, 180); }
+
+  mqtt.publish(TOPIC_STATUS, "cmd_ok", false);
+}
+
+void ensureWifi() {
+  if (WiFi.status() == WL_CONNECTED) return;
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+
+  unsigned long t0 = millis();
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(250);
+    if (millis() - t0 > 15000) break;
+  }
+}
+
+void ensureMqtt() {
+  if (mqtt.connected()) return;
+
+  tlsClient.setInsecure(); 
+
+  String clientId = "BriceVelour-" + String((uint32_t)ESP.getEfuseMac(), HEX);
+
+  if (mqtt.connect(clientId.c_str(), MQTT_USER, MQTT_PASS,
+                   TOPIC_STATUS, 0, true, "offline")) {
+    mqtt.publish(TOPIC_STATUS, "online", true);
+    mqtt.subscribe(TOPIC_CMD);
+  }
+}
+
+void publishMqttTelemetry(int lux) {
+  if (!mqtt.connected()) return;
+
+  char payload[200];
+  buildJson(payload, sizeof(payload), lux);
+  mqtt.publish(TOPIC_TELEMETRY, payload, false);
+}
+
+void setup() {
+  Serial.begin(115200);
+  delay(1500);
+
+  Serial.println();
+  Serial.println("=== Station Meteo Intelligente (DHT11 + LDR + NeoPixel + Buzzer) ===");
+
+  dht.begin();
+
+  ring.begin();
+  ring.setBrightness(120);
+  setAll(0);
+
+  pinMode(BUZZER_PIN, OUTPUT);
+  noTone(BUZZER_PIN);
+
+  ensureWifi();
+  mqtt.setServer(MQTT_HOST, MQTT_PORT);
+  mqtt.setCallback(onMqttMessage);
+  ensureMqtt();
+}
+
+void loop() {
+  unsigned long now = millis();
+
+  ensureWifi();
+  ensureMqtt();
+  mqtt.loop();
+
+  if (now - lastSensorAt >= SENSOR_PERIOD_MS) {
+    lastSensorAt = now;
+    readSensors();
+  }
+
+  int lux = luxAvg();
+
+  if (currentMode == Mode::DARK && shouldExitDark(lux)) currentMode = Mode::NORMAL;
+  if (currentMode == Mode::HOT  && shouldExitHot(tempC)) currentMode = Mode::NORMAL;
+  if (currentMode == Mode::HUMID && shouldExitHumid(humPct)) currentMode = Mode::NORMAL;
+
+  if (currentMode == Mode::NORMAL) {
+    currentMode = decideMode(lux, tempC, humPct);
+  }
+
+  if (currentMode != lastMode) {
+    if (currentMode == Mode::DARK) themeStart();
+    if (lastMode == Mode::DARK) themeStop();
+    lastMode = currentMode;
+  }
+
+  applyMode(currentMode, lux, tempC, humPct);
+
+  themeTick();
+
+  if (now - lastPrintAt >= PRINT_PERIOD_MS) {
+    lastPrintAt = now;
+    printJson(lux);
+  }
+
+  if (now - lastMqttAt >= MQTT_PERIOD_MS) {
+    lastMqttAt = now;
+    publishMqttTelemetry(lux);
+  }
+}

@@ -1,0 +1,9 @@
+.DS_Store
+._*
+out/
+build/
+.gradle/
+node_modules/
+cmake-build-*/
+*.class
+.idea/workspace*.xml

@@ -1,0 +1,31 @@
+img {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .promo-card {
+    min-height: 420px;
+  }
+
+  .promo-img {
+    height: 100%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .promo-card {
+    min-height: auto;
+  }
+
+  .promo-img {
+    height: 260px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .promo-text {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+  }
+}

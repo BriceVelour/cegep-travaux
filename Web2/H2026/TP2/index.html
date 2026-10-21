@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockstar Games - Studio de Jeux Video</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> ROCKSTAR GAMES
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuNavigation">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="bi bi-house-fill"></i> Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#jeux">
+                            <i class="bi bi-joystick"></i> Nos Jeux
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#apropos">
+                            <i class="bi bi-info-circle"></i> A Propos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="carrousel">
+        <div id="monCarrousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#monCarrousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#monCarrousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#monCarrousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/red-dead-redemption-2-2023-5k-hw-yFDXoLLRzCPlfz5wyKZZYYxMQ9RfB3.jpg" 
+                         class="d-block w-100 carousel-img" 
+                         alt="GTA 6">
+                    <div class="carousel-caption">
+                        <span class="badge-nouveau">NOUVEAU</span>
+                        <h2>GTA VI</h2>
+                        <p>Le prochain chapitre de la saga Grand Theft Auto arrive bientôt.</p>
+                        <a href="#jeux" class="btn btn-or">
+                            <i class="bi bi-play-fill"></i> Découvrir
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-01%2016.43.19%20-%20A%20stylish%20and%20elegant%20minimalist%20logo%20inspired%20by%20Rockstar%20Games%2C%20designed%20with%20a%20sleek%2C%20profession-aGyWuC4MRwBJ6SEJVuYEBOuAmIYNWw.webp" 
+                         class="d-block w-100 carousel-img" 
+                         alt="Red Dead Redemption 2">
+                    <div class="carousel-caption">
+                        <span class="badge-classique">CLASSIQUE</span>
+                        <h2>Red Dead Redemption 2</h2>
+                        <p>Une aventure épique dans l'Ouest américain.</p>
+                        <a href="#jeux" class="btn btn-or">
+                            <i class="bi bi-play-fill"></i> Découvrir
+                        </a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ciudad-de-gta-6-12064-3vL6eFTxttBGazgqIeCemuYMK1yKZX.webp" 
+                         class="d-block w-100 carousel-img" 
+                         alt="GTA V">
+                    <div class="carousel-caption">
+                        <span class="badge-populaire">POPULAIRE</span>
+                        <h2>GTA V</h2>
+                        <p>Explorez Los Santos et vivez des aventures sans fin.</p>
+                        <a href="#jeux" class="btn btn-or">
+                            <i class="bi bi-play-fill"></i> Découvrir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#monCarrousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#monCarrousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </section>
+
+    <section id="jeux" class="section-jeux">
+        <div class="container">
+            <div class="titre-avec-ligne text-center">
+                <h2 class="titre-section">NOS JEUX</h2>
+                <p class="sous-titre">Découvrez nos créations légendaires</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-6 mb-4">
+                    <div class="carte-jeu carte-grande">
+                        <img src="images/gta6-jeux.jpg" 
+                             class="carte-image" 
+                             alt="GTA 6">
+                        <div class="carte-overlay">
+                            <span class="carte-badge">A VENIR</span>
+                            <h3>GTA VI</h3>
+                            <p>Le jeu le plus attendu de la décennie arrive en 2025.</p>
+                            <div class="carte-infos">
+                                <span><i class="bi bi-calendar3"></i> 2025</span>
+                                <span><i class="bi bi-controller"></i> PS5, Xbox, PC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="carte-jeu carte-horizontale">
+                                <div class="row g-0">
+                                    <div class="col-5">
+                                        <img src="images/rdr2-jeux.jpg" 
+                                             class="carte-image-h" 
+                                             alt="Red Dead Redemption 2">
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="carte-contenu-h">
+                                            <span class="carte-badge-petit">DISPONIBLE</span>
+                                            <h4>Red Dead Redemption 2</h4>
+                                            <p>Une histoire inoubliable dans le Far West.</p>
+                                            <div class="carte-note">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <span>5/5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="carte-jeu carte-horizontale">
+                                <div class="row g-0">
+                                    <div class="col-5">
+                                        <img src="images/gtav-jeux.jpg" 
+                                             class="carte-image-h" 
+                                             alt="GTA V">
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="carte-contenu-h">
+                                            <span class="carte-badge-petit">BEST-SELLER</span>
+                                            <h4>GTA V</h4>
+                                            <p>Le jeu qui a défini une génération.</p>
+                                            <div class="carte-note">
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-fill"></i>
+                                                <i class="bi bi-star-half"></i>
+                                                <span>4.5/5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trailer" class="section-video">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+                    <div class="video-texte">
+                        <h2><i class="bi bi-play-circle-fill"></i> BANDE-ANNONCE</h2>
+                        <h3>GTA VI - Trailer Officiel</h3>
+                        <p>Plongez dans Vice City comme jamais auparavant. Découvrez le trailer officiel du jeu le plus attendu de l'année.</p>
+                        <ul class="liste-caracteristiques">
+                            <li><i class="bi bi-check-circle-fill"></i> Monde ouvert nouvelle génération</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Histoire immersive</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Graphismes ultra-réalistes</li>
+                            <li><i class="bi bi-check-circle-fill"></i> Multijoueur en ligne</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-7">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/QdBZY2fkU-0" 
+                            title="GTA VI Trailer" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="section-apropos">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                    <div class="apropos-image">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/d24b283fef05163e7a43fd0cfade8cb5-sH1cRVDL37nTyvRyu4qmQnIG7u1NX4.jpg" 
+                             alt="Notre Studio" 
+                             class="img-fluid">
+                        <div class="apropos-badge">
+                            <span class="nombre">25+</span>
+                            <span class="texte">Années d'expérience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="apropos-contenu">
+                        <span class="apropos-label">A PROPOS DE NOUS</span>
+                        <h2>Nous créons des mondes inoubliables</h2>
+                        <p class="apropos-description">
+                            Rockstar Games est un studio de développement de jeux vidéo reconnu mondialement 
+                            pour ses univers immersifs et ses histoires captivantes. Depuis 1998, nous 
+                            repoussons les limites du possible.
+                        </p>
+                        <div class="row stats-grid">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <i class="bi bi-controller"></i>
+                                    <span class="stat-nombre">50+</span>
+                                    <span class="stat-texte">Jeux</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <i class="bi bi-people-fill"></i>
+                                    <span class="stat-nombre">2000+</span>
+                                    <span class="stat-texte">Employés</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <i class="bi bi-trophy-fill"></i>
+                                    <span class="stat-nombre">200+</span>
+                                    <span class="stat-texte">Prix</span>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <i class="bi bi-globe"></i>
+                                    <span class="stat-nombre">10</span>
+                                    <span class="stat-texte">Studios</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-or mt-4">
+                            <i class="bi bi-envelope"></i> Contactez-nous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="actualites" class="section-actualites">
+        <div class="container">
+            <div class="titre-avec-ligne text-center">
+                <h2 class="titre-section">ACTUALITÉS</h2>
+                <p class="sous-titre">Les dernières nouvelles du studio</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <article class="carte-actu">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/GTA-6-4k-Wallpaper-lJDV7U2iw4M7zyoyO8HnmwB3VIkV4O.jpg" 
+                             alt="Actualite GTA 6" 
+                             class="carte-actu-img">
+                        <div class="carte-actu-contenu">
+                            <span class="carte-actu-date">
+                                <i class="bi bi-calendar3"></i> 15 Mars 2025
+                            </span>
+                            <h4>GTA VI : Nouvelle bande-annonce</h4>
+                            <p>Découvrez les premières images du gameplay tant attendu...</p>
+                            <a href="#" class="lien-lire-plus">
+                                Lire la suite <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <article class="carte-actu">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/R-kaRwleAiyE0LjxhMl6MNag72pkE7tU.jpg" 
+                             alt="Mise a jour" 
+                             class="carte-actu-img">
+                        <div class="carte-actu-contenu">
+                            <span class="carte-actu-date">
+                                <i class="bi bi-calendar3"></i> 10 Mars 2025
+                            </span>
+                            <h4>Mise à jour GTA Online</h4>
+                            <p>De nouvelles missions et véhicules arrivent cette semaine...</p>
+                            <a href="#" class="lien-lire-plus">
+                                Lire la suite <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <article class="carte-actu">
+                        <img src="images/rdr2-actu.jpg" 
+                             alt="Red Dead Redemption 2 Prix" 
+                             class="carte-actu-img">
+                        <div class="carte-actu-contenu">
+                            <span class="carte-actu-date">
+                                <i class="bi bi-calendar3"></i> 5 Mars 2025
+                            </span>
+                            <h4>RDR2 remporte un nouveau prix</h4>
+                            <p>Notre western épique continue de recevoir des récompenses...</p>
+                            <a href="#" class="lien-lire-plus">
+                                Lire la suite <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <h3 class="footer-logo">
+                        <i class="bi bi-controller"></i> ROCKSTAR GAMES
+                    </h3>
+                    <p class="footer-description">
+                        Créateurs de mondes légendaires depuis 1998. 
+                        Nous repoussons les limites du jeu vidéo.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h4 class="footer-titre">Navigation</h4>
+                    <ul class="footer-liens">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#jeux">Nos Jeux</a></li>
+                        <li><a href="#apropos">A Propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h4 class="footer-titre">Nos Jeux</h4>
+                    <ul class="footer-liens">
+                        <li><a href="#">GTA VI</a></li>
+                        <li><a href="#">GTA V</a></li>
+                        <li><a href="#">RDR 2</a></li>
+                        <li><a href="#">GTA Online</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-4 mb-4">
+                    <h4 class="footer-titre">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            622 Broadway, New York, NY 10012
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            contact@rockstargames.com
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            +1 (212) 334-6633
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rockstar Games. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

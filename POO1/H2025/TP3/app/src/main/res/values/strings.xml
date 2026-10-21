@@ -1,0 +1,10 @@
+<resources>
+    <string name="titre_ajout">Ajouter une commande</string>
+    <string name="breuvage">Ajouter un breuvage (2,30 $)</string>
+    <string name="dessert">Ajouter un dessert (4,20 $)</string>
+    <string name="ajouter_commande">Ajouter la commande</string>
+    <string name="total_label">Total: 0.00 $</string>
+    <string name="menu_ajouter">Ajouter</string>
+    <string name="menu_deconnexion">Déconnexion</string>
+    <string name="app_name">BATPASTA</string>
+</resources>

@@ -1,0 +1,974 @@
+$couleur-or: #d4af37;
+$couleur-or-fonce: #b8860b;
+$fond-noir: #0a0a0a;
+$fond-section: #121212;
+$fond-carte: #1a1a1a;
+$texte-blanc: #ffffff;
+$texte-gris: #888888;
+
+$couleurs-jeux: (
+    "gta6": #d4af37,
+    "rdr2": #8b4513,
+    "gtav": #2e8b57
+);
+
+@function assombrir($couleur, $pourcentage) {
+    @return darken($couleur, $pourcentage);
+}
+
+@function taille-responsive($min, $max) {
+    @return clamp(#{$min}, 5vw, #{$max});
+}
+
+@mixin centrer-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition-fluide {
+    transition: all 0.3s ease;
+}
+
+@mixin bouton-or {
+    background-color: $couleur-or;
+    color: $fond-noir;
+    border: none;
+    padding: 12px 30px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    @include transition-fluide;
+
+    &:hover {
+        background-color: $couleur-or-fonce;
+        color: $texte-blanc;
+    }
+}
+
+@mixin overlay-sombre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+@mixin style-carte {
+    background-color: $fond-carte;
+    border: 1px solid rgba($couleur-or, 0.2);
+    overflow: hidden;
+    @include transition-fluide;
+
+    &:hover {
+        border-color: $couleur-or;
+        transform: translateY(-5px);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $fond-noir;
+    color: $texte-blanc;
+}
+
+.navbar {
+    background-color: rgba($fond-noir, 0.95);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba($couleur-or, 0.3);
+}
+
+.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $couleur-or !important;
+    letter-spacing: 2px;
+
+    i {
+        margin-right: 8px;
+    }
+}
+
+.nav-link {
+    font-family: 'Oswald', sans-serif;
+    color: $texte-blanc !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    @include transition-fluide;
+
+    i {
+        margin-right: 5px;
+    }
+
+    &:hover,
+    &.active {
+        color: $couleur-or !important;
+    }
+}
+
+#carrousel {
+    margin-top: 76px;
+}
+
+.carousel-img {
+    height: 85vh;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.carousel-caption {
+    bottom: 25%;
+    text-align: center;
+
+    h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: taille-responsive(2.5rem, 4rem);
+        color: $texte-blanc;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: $texte-gris;
+        margin-bottom: 25px;
+    }
+}
+
+.badge-nouveau,
+.badge-classique,
+.badge-populaire {
+    display: inline-block;
+    padding: 5px 15px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.badge-nouveau {
+    background-color: #e74c3c;
+    color: $texte-blanc;
+}
+
+.badge-classique {
+    background-color: $couleur-or;
+    color: $fond-noir;
+}
+
+.badge-populaire {
+    background-color: #27ae60;
+    color: $texte-blanc;
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    @include transition-fluide;
+
+    &.active {
+        background-color: $couleur-or;
+    }
+}
+
+.btn-or {
+    @include bouton-or;
+    text-decoration: none;
+    display: inline-block;
+
+    i {
+        margin-right: 5px;
+    }
+}
+
+.titre-avec-ligne {
+    margin-bottom: 50px;
+}
+
+.titre-section {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    color: $couleur-or;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.sous-titre {
+    color: $texte-gris;
+    font-size: 1.1rem;
+}
+
+.section-jeux {
+    padding: 80px 0;
+    background-color: $fond-noir;
+}
+
+.carte-jeu {
+    @include style-carte;
+    position: relative;
+}
+
+.carte-grande {
+    height: 100%;
+    min-height: 450px;
+    position: relative;
+
+    .carte-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .carte-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 30px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: $texte-blanc;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: $texte-gris;
+            margin-bottom: 15px;
+        }
+    }
+
+    .carte-infos {
+        span {
+            display: inline-block;
+            margin-right: 20px;
+            color: $texte-gris;
+            font-size: 0.9rem;
+
+            i {
+                color: $couleur-or;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.carte-badge {
+    display: inline-block;
+    background-color: $couleur-or;
+    color: $fond-noir;
+    padding: 3px 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.carte-horizontale {
+    height: 100%;
+
+    .carte-image-h {
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+        object-fit: cover;
+    }
+
+    .carte-contenu-h {
+        padding: 20px;
+        height: 100%;
+        @include centrer-flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            color: $texte-blanc;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: $texte-gris;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    .carte-badge-petit {
+        display: inline-block;
+        background-color: rgba($couleur-or, 0.2);
+        color: $couleur-or;
+        padding: 2px 8px;
+        font-size: 0.7rem;
+        font-family: 'Oswald', sans-serif;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+
+    .carte-note {
+        color: $couleur-or;
+        font-size: 0.85rem;
+
+        span {
+            color: $texte-gris;
+            margin-left: 8px;
+        }
+    }
+}
+
+.section-video {
+    padding: 80px 0;
+    background-color: $fond-section;
+}
+
+.video-texte {
+    h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1rem;
+        color: $couleur-or;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+
+    h3 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2rem;
+        color: $texte-blanc;
+        margin-bottom: 20px;
+    }
+
+    p {
+        color: $texte-gris;
+        line-height: 1.7;
+        margin-bottom: 25px;
+    }
+}
+
+.liste-caracteristiques {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        color: $texte-blanc;
+        margin-bottom: 12px;
+        font-size: 1rem;
+
+        i {
+            color: $couleur-or;
+            margin-right: 10px;
+        }
+    }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 2px solid rgba($couleur-or, 0.3);
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.section-apropos {
+    padding: 80px 0;
+    background-color: $fond-noir;
+}
+
+.apropos-image {
+    position: relative;
+
+    img {
+        width: 100%;
+        height: auto;
+        border: 2px solid rgba($couleur-or, 0.3);
+    }
+
+    .apropos-badge {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        background-color: $couleur-or;
+        color: $fond-noir;
+        padding: 20px;
+        text-align: center;
+
+        .nombre {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .texte {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.apropos-contenu {
+    .apropos-label {
+        display: inline-block;
+        color: $couleur-or;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 2.2rem;
+        color: $texte-blanc;
+        margin-bottom: 20px;
+    }
+
+    .apropos-description {
+        color: $texte-gris;
+        line-height: 1.8;
+        margin-bottom: 30px;
+    }
+}
+
+.stats-grid {
+    margin-top: 30px;
+
+    .stat-item {
+        text-align: center;
+        padding: 20px 10px;
+        background-color: $fond-section;
+        border: 1px solid rgba($couleur-or, 0.2);
+
+        i {
+            font-size: 1.5rem;
+            color: $couleur-or;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-nombre {
+            display: block;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.8rem;
+            color: $texte-blanc;
+        }
+
+        .stat-texte {
+            color: $texte-gris;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+.section-actualites {
+    padding: 80px 0;
+    background-color: $fond-section;
+}
+
+.carte-actu {
+    @include style-carte;
+    height: 100%;
+
+    .carte-actu-img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .carte-actu-contenu {
+        padding: 20px;
+
+        .carte-actu-date {
+            color: $couleur-or;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            color: $texte-blanc;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: $texte-gris;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+    }
+
+    .lien-lire-plus {
+        color: $couleur-or;
+        text-decoration: none;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.9rem;
+        @include transition-fluide;
+
+        i {
+            margin-left: 5px;
+        }
+
+        &:hover {
+            color: $couleur-or-fonce;
+        }
+    }
+}
+
+.page-header {
+    margin-top: 76px;
+    padding: 100px 0;
+    background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/DALL%C2%B7E%202025-03-01%2017.18.02%20-%20A%20stylish%20and%20elegant%20homepage%20image%20inspired%20by%20Rockstar%20Games.%20The%20scene%20features%20an%20urban%20nights.webp-X0NdtKXeay77ggmyS9iXKieAxUvRva.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    &::before {
+        content: '';
+        @include overlay-sombre;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .page-label {
+        display: inline-block;
+        color: $couleur-or;
+        font-family: 'Oswald', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        font-family: 'Oswald', sans-serif;
+        font-size: taille-responsive(2rem, 3rem);
+        color: $texte-blanc;
+        margin-bottom: 15px;
+    }
+
+    p {
+        color: $texte-gris;
+        font-size: 1.1rem;
+    }
+}
+
+.section-contact {
+    padding: 80px 0;
+    background-color: $fond-noir;
+}
+
+.contact-info-carte {
+    background-color: $fond-section;
+    padding: 40px;
+    border: 1px solid rgba($couleur-or, 0.2);
+    height: 100%;
+
+    h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        color: $couleur-or;
+        margin-bottom: 15px;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .contact-intro {
+        color: $texte-gris;
+        margin-bottom: 30px;
+        line-height: 1.7;
+    }
+}
+
+.contact-info-item {
+    display: flex;
+    margin-bottom: 25px;
+
+    .contact-info-icone {
+        width: 50px;
+        height: 50px;
+        background-color: rgba($couleur-or, 0.1);
+        @include centrer-flex;
+        margin-right: 15px;
+        flex-shrink: 0;
+
+        i {
+            color: $couleur-or;
+            font-size: 1.2rem;
+        }
+    }
+
+    .contact-info-texte {
+        h4 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            color: $texte-blanc;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: $texte-gris;
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+    }
+}
+
+.contact-social {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba($couleur-or, 0.2);
+
+    h4 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1rem;
+        color: $texte-blanc;
+        margin-bottom: 15px;
+    }
+
+    .contact-social-liens {
+        a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba($couleur-or, 0.1);
+            @include centrer-flex;
+            margin-right: 10px;
+            @include transition-fluide;
+
+            i {
+                color: $couleur-or;
+                font-size: 1.1rem;
+            }
+
+            &:hover {
+                background-color: $couleur-or;
+
+                i {
+                    color: $fond-noir;
+                }
+            }
+        }
+    }
+}
+
+.formulaire-carte {
+    background-color: $fond-section;
+    padding: 40px;
+    border: 1px solid rgba($couleur-or, 0.2);
+
+    h2 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        color: $couleur-or;
+        margin-bottom: 10px;
+
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .formulaire-intro {
+        color: $texte-gris;
+        margin-bottom: 30px;
+    }
+}
+
+.form-label {
+    color: $texte-blanc;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.95rem;
+
+    i {
+        color: $couleur-or;
+        margin-right: 5px;
+    }
+}
+
+.form-control,
+.form-select {
+    background-color: rgba($fond-noir, 0.5);
+    border: 2px solid rgba($couleur-or, 0.2);
+    color: $texte-blanc;
+    padding: 12px;
+    @include transition-fluide;
+
+    &:focus {
+        border-color: $couleur-or;
+        box-shadow: 0 0 0 3px rgba($couleur-or, 0.2);
+        background-color: rgba($fond-noir, 0.8);
+        color: $texte-blanc;
+    }
+
+    &::placeholder {
+        color: $texte-gris;
+    }
+}
+
+.form-select option {
+    background-color: $fond-section;
+    color: $texte-blanc;
+}
+
+.form-check-input {
+    background-color: transparent;
+    border: 2px solid $couleur-or;
+
+    &:checked {
+        background-color: $couleur-or;
+        border-color: $couleur-or;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba($couleur-or, 0.2);
+    }
+}
+
+.form-check-label {
+    color: $texte-gris;
+}
+
+.section-faq {
+    padding: 80px 0;
+    background-color: $fond-section;
+}
+
+.accordion-item {
+    background-color: $fond-noir;
+    border: 1px solid rgba($couleur-or, 0.2);
+    margin-bottom: 15px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.accordion-button {
+    background-color: $fond-noir;
+    color: $texte-blanc;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    padding: 20px;
+    @include transition-fluide;
+
+    i {
+        color: $couleur-or;
+        margin-right: 15px;
+    }
+
+    &:not(.collapsed) {
+        background-color: assombrir($fond-noir, 2%);
+        color: $couleur-or;
+        box-shadow: none;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px rgba($couleur-or, 0.2);
+    }
+
+    &::after {
+        filter: invert(1);
+    }
+}
+
+.accordion-body {
+    background-color: $fond-noir;
+    color: $texte-gris;
+    padding: 20px;
+    line-height: 1.7;
+}
+
+.footer {
+    background-color: assombrir($fond-section, 3%);
+    padding: 60px 0 30px;
+    border-top: 1px solid rgba($couleur-or, 0.3);
+}
+
+.footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    color: $couleur-or;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+
+    i {
+        margin-right: 8px;
+    }
+}
+
+.footer-description {
+    color: $texte-gris;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.footer-social {
+    a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba($couleur-or, 0.1);
+        @include centrer-flex;
+        margin-right: 10px;
+        @include transition-fluide;
+
+        i {
+            color: $couleur-or;
+            font-size: 1.1rem;
+        }
+
+        &:hover {
+            background-color: $couleur-or;
+
+            i {
+                color: $fond-noir;
+            }
+        }
+    }
+}
+
+.footer-titre {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    color: $texte-blanc;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.footer-liens {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        margin-bottom: 10px;
+
+        a {
+            color: $texte-gris;
+            text-decoration: none;
+            @include transition-fluide;
+
+            &:hover {
+                color: $couleur-or;
+            }
+        }
+    }
+}
+
+.footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        color: $texte-gris;
+        margin-bottom: 12px;
+
+        i {
+            color: $couleur-or;
+            margin-right: 10px;
+        }
+    }
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba($couleur-or, 0.2);
+    text-align: center;
+
+    p {
+        color: $texte-gris;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel-img {
+        height: 70vh;
+    }
+
+    .carte-grande {
+        min-height: 350px;
+    }
+
+    .apropos-badge {
+        bottom: 10px;
+        right: 10px;
+        padding: 15px;
+
+        .nombre {
+            font-size: 2rem;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 60vh;
+    }
+
+    .carousel-caption {
+        bottom: 15%;
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .titre-section {
+        font-size: 2rem;
+    }
+
+    .formulaire-carte,
+    .contact-info-carte {
+        padding: 25px;
+    }
+
+    .stats-grid .stat-item {
+        margin-bottom: 15px;
+    }
+}

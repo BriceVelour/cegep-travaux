@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BV Meteo • Minimal Luxe</title>
+
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b0c0f;
+      --card:#11131a;
+      --card2:#0f1117;
+      --text:#f1efe7;
+      --muted:#b9b4a7;
+      --line:rgba(241,239,231,.12);
+      --ok:#6ee7a8;
+      --bad:#ff6b6b;
+      --accent:#e8ddc6;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(232,221,198,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(110,231,168,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing:.2px;
+    }
+
+    .wrap{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 22px 16px 40px;
+    }
+
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom: 18px;
+    }
+
+    .title{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    h1{
+      font-size: 22px;
+      margin:0;
+      font-weight: 650;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size: 13px;
+    }
+
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      background: rgba(17,19,26,.62);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      user-select:none;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: var(--bad);
+      box-shadow: 0 0 0 6px rgba(255,107,107,.12);
+    }
+    .status.ok .dot{
+      background: var(--ok);
+      box-shadow: 0 0 0 6px rgba(110,231,168,.12);
+    }
+    .status .label{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .status b{
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr}
+    }
+
+    .panel{
+      background: rgba(17,19,26,.75);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+
+    .panel .hd{
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .panel .hd .k{
+      display:flex;flex-direction:column;gap:3px;
+    }
+    .panel .hd .k .t{
+      font-size: 13px;color:var(--muted)
+    }
+    .panel .hd .k .v{
+      font-size: 15px;font-weight:650
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+      padding: 14px;
+    }
+    @media (max-width: 980px){
+      .cards{grid-template-columns: repeat(2, 1fr)}
+    }
+
+    .card{
+      background: rgba(15,17,23,.75);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 12px 10px;
+      min-height: 86px;
+    }
+    .card .k{color:var(--muted);font-size:12px}
+    .card .v{font-size: 22px;font-weight: 700;margin-top:6px}
+    .card .u{color:var(--muted);font-size:12px;margin-top:6px}
+    .mode-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(232,221,198,.08);
+      color: var(--accent);
+      font-weight: 650;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .9px;
+    }
+
+    .content{
+      padding: 14px;
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      border:1px solid var(--line);
+      background: rgba(15,17,23,.75);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 14px;
+      cursor:pointer;
+      font-weight: 650;
+      font-size: 13px;
+      transition: transform .08s ease, border-color .2s ease, background .2s ease;
+      user-select:none;
+    }
+    .btn:hover{
+      border-color: rgba(232,221,198,.45);
+      background: rgba(232,221,198,.10);
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn.primary{
+      border-color: rgba(232,221,198,.55);
+      background: rgba(232,221,198,.14);
+      color: var(--accent);
+    }
+
+    .toggle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(15,17,23,.75);
+    }
+    .toggle input{
+      width: 44px;
+      height: 24px;
+      appearance:none;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      position:relative;
+      outline:none;
+      cursor:pointer;
+      border:1px solid var(--line);
+      transition: background .2s ease;
+    }
+    .toggle input:checked{
+      background: rgba(110,231,168,.18);
+      border-color: rgba(110,231,168,.35);
+    }
+    .toggle input::after{
+      content:"";
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--text);
+      position:absolute;
+      top: 2px; left: 2px;
+      transition: transform .2s ease;
+      opacity:.9;
+    }
+    .toggle input:checked::after{
+      transform: translateX(20px);
+    }
+    .toggle span{
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 650;
+    }
+
+    .canvasWrap{
+      padding: 0 14px 14px;
+    }
+    canvas{
+      width:100%;
+      height:240px;
+      display:block;
+      background: rgba(15,17,23,.55);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .log{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New";
+      font-size: 12px;
+      color: rgba(241,239,231,.85);
+      background: rgba(15,17,23,.55);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
+      height: 210px;
+      overflow:auto;
+      white-space: pre-wrap;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 10px;
+      line-height: 1.55;
+    }
+
+    .pill{
+      display:inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(17,19,26,.6);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Station météo — Minimal Luxe</h1>
+        <p class="sub">ESP32 → MQTT → Dashboard • Topics: <span class="pill">telemetry</span> <span class="pill">cmd</span> <span class="pill">status</span></p>
+      </div>
+
+      <div id="status" class="status">
+        <div class="dot"></div>
+        <div class="label">
+          <b id="statusText">disconnected</b><br/>
+          <span id="statusSub">—</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="hd">
+          <div class="k">
+            <div class="t">Mode actuel</div>
+            <div class="v"><span id="modeBadge" class="mode-badge">—</span></div>
+          </div>
+          <div class="k" style="text-align:right">
+            <div class="t">Dernière mise à jour</div>
+            <div class="v" id="lastSeen">—</div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="k">Température</div>
+            <div class="v"><span id="temp">—</span></div>
+            <div class="u">°C</div>
+          </div>
+          <div class="card">
+            <div class="k">Humidité</div>
+            <div class="v"><span id="hum">—</span></div>
+            <div class="u">%</div>
+          </div>
+          <div class="card">
+            <div class="k">Luminosité</div>
+            <div class="v"><span id="lux">—</span></div>
+            <div class="u">lux_avg (raw)</div>
+          </div>
+          <div class="card">
+            <div class="k">État</div>
+            <div class="v"><span id="alive">—</span></div>
+            <div class="u">online/offline</div>
+          </div>
+        </div>
+
+        <div class="canvasWrap">
+          <canvas id="chart" width="900" height="320"></canvas>
+          <div class="hint">Graph: 60 derniers points • <b>Temp</b> + <b>Hum</b> (échelle auto)</div>
+        </div>
+      </section>
+
+    
+      <aside class="panel">
+        <div class="hd">
+          <div class="k">
+            <div class="t">Contrôles</div>
+            <div class="v">MQTT Commands</div>
+          </div>
+          <div class="k" style="text-align:right">
+            <div class="t">Topic cmd</div>
+            <div class="v"><span class="pill">bricevelour/meteo/cmd</span></div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="row" style="margin-bottom:10px">
+            <button class="btn primary" id="btnBeep">Beep</button>
+            <button class="btn" id="btnTheme">Theme</button>
+            <button class="btn" id="btnThemeOff">Theme Off</button>
+          </div>
+
+          <div class="row" style="margin-bottom:14px">
+            <div class="toggle">
+              <input id="toggleBuzzer" type="checkbox" checked />
+              <span>Buzzer ON/OFF</span>
+            </div>
+          </div>
+
+          <div class="hint" style="margin-bottom:10px">
+            Les commandes envoyées sont des textes simples : <span class="pill">beep</span> <span class="pill">theme</span> <span class="pill">theme_off</span> <span class="pill">buzzer_on</span> <span class="pill">buzzer_off</span>
+          </div>
+
+          <div class="hd" style="margin: 12px 0 10px; border-radius: 14px; border:1px solid var(--line); background: rgba(15,17,23,.35);">
+            <div class="k">
+              <div class="t">Console</div>
+              <div class="v">Derniers messages</div>
+            </div>
+            <div class="k" style="text-align:right">
+              <button class="btn" id="btnClear">Clear</button>
+            </div>
+          </div>
+
+          <div id="log" class="log"></div>
+
+          <div class="hint">
+            Pro tip: si ton ESP32 publie aussi <span class="pill">bricevelour/meteo/status</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+<script>
+  const HOST = "f0b66236ba314325bcc00d6816612a7d.s1.eu.hivemq.cloud";
+  const USER = "bricevelour"; 
+  const PASS = "";     
+  const PORT = 8884;
+
+  const TOPIC_TELEMETRY = "bricevelour/meteo/telemetry";
+  const TOPIC_CMD       = "bricevelour/meteo/cmd";
+  const TOPIC_STATUS    = "bricevelour/meteo/status";
+
+  const url = `wss://${HOST}:${PORT}/mqtt`;
+
+  const statusEl = document.getElementById("status");
+  const statusText = document.getElementById("statusText");
+  const statusSub  = document.getElementById("statusSub");
+
+  const elTemp = document.getElementById("temp");
+  const elHum  = document.getElementById("hum");
+  const elLux  = document.getElementById("lux");
+  const elMode = document.getElementById("modeBadge");
+  const elAlive= document.getElementById("alive");
+  const elLast = document.getElementById("lastSeen");
+  const logEl  = document.getElementById("log");
+
+  const btnBeep = document.getElementById("btnBeep");
+  const btnTheme = document.getElementById("btnTheme");
+  const btnThemeOff = document.getElementById("btnThemeOff");
+  const btnClear = document.getElementById("btnClear");
+  const toggleBuzzer = document.getElementById("toggleBuzzer");
+
+  function logLine(line){
+    const now = new Date();
+    const ts = now.toLocaleTimeString("fr-CA");
+    logEl.textContent = `[${ts}] ${line}\n` + logEl.textContent;
+  }
+
+  function setStatus(ok, text, sub){
+    statusEl.classList.toggle("ok", !!ok);
+    statusText.textContent = text;
+    statusSub.textContent = sub || "—";
+  }
+
+  const canvas = document.getElementById("chart");
+  const ctx = canvas.getContext("2d");
+
+  const MAX_POINTS = 60;
+  const seriesTemp = [];
+  const seriesHum  = [];
+
+  function pushPoint(arr, v){
+    arr.push(v);
+    if (arr.length > MAX_POINTS) arr.shift();
+  }
+
+  function minMax(arr){
+    let min = Infinity, max = -Infinity;
+    for (const v of arr){
+      if (typeof v !== "number" || Number.isNaN(v)) continue;
+      if (v < min) min = v;
+      if (v > max) max = v;
+    }
+    if (min === Infinity) { min = 0; max = 1; }
+    if (min === max) { max = min + 1; }
+    return {min, max};
+  }
+
+  function drawChart(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 1;
+
+    ctx.strokeStyle = "rgba(241,239,231,.10)";
+    for (let i=1; i<=4; i++){
+      const y = (canvas.height/5)*i;
+      ctx.beginPath();
+      ctx.moveTo(0,y);
+      ctx.lineTo(canvas.width,y);
+      ctx.stroke();
+    }
+
+    const mmT = minMax(seriesTemp);
+    const mmH = minMax(seriesHum);
+
+    function mapY(v, min, max){
+      const t = (v - min) / (max - min);
+      const pad = 22;
+      return (canvas.height - pad) - t * (canvas.height - pad*2);
+    }
+
+    function drawLine(arr, min, max, stroke){
+      if (arr.length < 2) return;
+      ctx.strokeStyle = stroke;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (let i=0; i<arr.length; i++){
+        const x = (canvas.width/(MAX_POINTS-1))*i;
+        const v = arr[i];
+        const y = mapY(v, min, max);
+        if (i === 0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    drawLine(seriesTemp, mmT.min, mmT.max, "rgba(232,221,198,.95)");
+    drawLine(seriesHum,  mmH.min, mmH.max, "rgba(110,231,168,.85)");
+
+    ctx.fillStyle = "rgba(241,239,231,.75)";
+    ctx.font = "12px ui-sans-serif, system-ui";
+    ctx.fillText("Temp (ivoire)", 12, 18);
+    ctx.fillText("Hum (vert)", 140, 18);
+  }
+
+  const client = mqtt.connect(url, {
+    username: USER,
+    password: PASS,
+    clean: true,
+    reconnectPeriod: 1500,
+    keepalive: 60,
+  });
+
+  client.on("connect", () => {
+    setStatus(true, "connected", "MQTT OK");
+    logLine("connected → subscribe telemetry/status");
+
+    client.subscribe(TOPIC_TELEMETRY, { qos: 0 });
+    client.subscribe(TOPIC_STATUS, { qos: 0 });
+  });
+
+  client.on("close", () => {
+    setStatus(false, "disconnected", "retrying…");
+    logLine("disconnected");
+  });
+
+  client.on("error", (err) => {
+    setStatus(false, "error", "check creds/host");
+    logLine("error: " + (err?.message || err));
+  });
+
+  function publishCmd(cmd){
+    if (!client.connected){
+      logLine("CMD blocked (not connected): " + cmd);
+      return;
+    }
+    client.publish(TOPIC_CMD, cmd, { qos: 0, retain: false });
+    logLine("cmd → " + TOPIC_CMD + " : " + cmd);
+  }
+
+  btnBeep.addEventListener("click", () => publishCmd("beep"));
+  btnTheme.addEventListener("click", () => publishCmd("theme"));
+  btnThemeOff.addEventListener("click", () => publishCmd("theme_off"));
+
+  toggleBuzzer.addEventListener("change", () => {
+    publishCmd(toggleBuzzer.checked ? "buzzer_on" : "buzzer_off");
+  });
+
+  btnClear.addEventListener("click", () => {
+    logEl.textContent = "";
+  });
+
+  function setModeBadge(mode){
+    const m = (mode || "").toLowerCase();
+    elMode.textContent = (mode || "—");
+
+    if (m === "dark") elMode.style.background = "rgba(232,221,198,.10)";
+    else if (m === "hot") elMode.style.background = "rgba(255,107,107,.12)";
+    else if (m === "humid") elMode.style.background = "rgba(110,231,168,.12)";
+    else elMode.style.background = "rgba(232,221,198,.08)";
+  }
+
+  client.on("message", (topic, payload) => {
+    const txt = payload.toString();
+
+    if (topic === TOPIC_STATUS){
+      elAlive.textContent = txt;
+      logLine(`status ← ${txt}`);
+      return;
+    }
+
+    if (topic !== TOPIC_TELEMETRY) return;
+
+    try{
+      const j = JSON.parse(txt);
+
+      if (typeof j.temp_c === "number") elTemp.textContent = j.temp_c.toFixed(1);
+      else elTemp.textContent = "—";
+
+      if (typeof j.hum_pct === "number") elHum.textContent = j.hum_pct.toFixed(1);
+      else elHum.textContent = "—";
+
+      if (typeof j.lux_avg === "number") elLux.textContent = j.lux_avg;
+      else if (typeof j.lux_raw === "number") elLux.textContent = j.lux_raw;
+      else elLux.textContent = "—";
+
+      setModeBadge(j.mode);
+
+      if (typeof j.temp_c === "number") pushPoint(seriesTemp, j.temp_c);
+      if (typeof j.hum_pct === "number") pushPoint(seriesHum, j.hum_pct);
+      drawChart();
+
+      const now = new Date();
+      elLast.textContent = now.toLocaleTimeString("fr-CA");
+
+      logLine(`telemetry ← temp=${j.temp_c} hum=${j.hum_pct} lux=${j.lux_avg ?? j.lux_raw} mode=${j.mode}`);
+    }catch(e){
+      logLine("telemetry parse error");
+    }
+  });
+
+  drawChart();
+  setStatus(false, "disconnected", "waiting…");
+  elAlive.textContent = "—";
+  setModeBadge("—");
+</script>
+</body>
+</html>

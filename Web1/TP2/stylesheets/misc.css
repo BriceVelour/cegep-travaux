@@ -1,0 +1,16 @@
+a:hover { 
+  color: #007c89; 
+  text-decoration: underline;
+}
+.google-logo { 
+  width: 24px; 
+  height: 24px; 
+  margin-right: 70px;
+}
+.langue { 
+  margin-right: 20px;
+}
+.fa-solid,.fas { 
+  font-weight: 900; 
+  color: #007c89;
+}

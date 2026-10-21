@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockstar Games - Contact</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-controller"></i> ROCKSTAR GAMES
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuNavigation">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="bi bi-house-fill"></i> Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#jeux">
+                            <i class="bi bi-joystick"></i> Nos Jeux
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#apropos">
+                            <i class="bi bi-info-circle"></i> A Propos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">
+                            <i class="bi bi-envelope"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container text-center">
+            <span class="page-label">CONTACTEZ-NOUS</span>
+            <h1>Nous sommes à votre écoute</h1>
+            <p>Une question, une suggestion ou un partenariat ? N'hésitez pas à nous contacter.</p>
+        </div>
+    </section>
+
+    <section class="section-contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-5 mb-4 mb-lg-0">
+                    <div class="contact-info-carte">
+                        <h2><i class="bi bi-building"></i> Nos Bureaux</h2>
+                        <p class="contact-intro">
+                            Nous sommes présents dans le monde entier. 
+                            Notre siège social est situé à New York.
+                        </p>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icone">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="contact-info-texte">
+                                <h4>Adresse</h4>
+                                <p>622 Broadway<br>New York, NY 10012<br>États-Unis</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icone">
+                                <i class="bi bi-envelope-fill"></i>
+                            </div>
+                            <div class="contact-info-texte">
+                                <h4>Email</h4>
+                                <p>contact@rockstargames.com<br>support@rockstargames.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-info-icone">
+                                <i class="bi bi-telephone-fill"></i>
+                            </div>
+                            <div class="contact-info-texte">
+                                <h4>Téléphone</h4>
+                                <p>+1 (212) 334-6633<br>Lun - Ven : 9h - 18h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-social">
+                            <h4>Suivez-nous</h4>
+                            <div class="contact-social-liens">
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-lg-7">
+                    <div class="formulaire-carte">
+                        <h2><i class="bi bi-chat-dots-fill"></i> Envoyez un message</h2>
+                        <p class="formulaire-intro">
+                            Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.
+                        </p>
+                        
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="prenom" class="form-label">
+                                        <i class="bi bi-person"></i> Prénom
+                                    </label>
+                                    <input type="text" class="form-control" id="prenom" placeholder="Votre prénom" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nom" class="form-label">
+                                        <i class="bi bi-person"></i> Nom
+                                    </label>
+                                    <input type="text" class="form-control" id="nom" placeholder="Votre nom" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="email" class="form-label">
+                                        <i class="bi bi-envelope"></i> Email
+                                    </label>
+                                    <input type="email" class="form-control" id="email" placeholder="votre@email.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="telephone" class="form-label">
+                                        <i class="bi bi-telephone"></i> Téléphone
+                                    </label>
+                                    <input type="tel" class="form-control" id="telephone" placeholder="+1 234 567 890">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="sujet" class="form-label">
+                                    <i class="bi bi-tag"></i> Sujet
+                                </label>
+                                <select class="form-select" id="sujet" required>
+                                    <option value="" selected disabled>Choisissez un sujet</option>
+                                    <option value="support">Support Technique</option>
+                                    <option value="feedback">Feedback sur un jeu</option>
+                                    <option value="partenariat">Proposition de partenariat</option>
+                                    <option value="presse">Demande presse</option>
+                                    <option value="emploi">Candidature / Emploi</option>
+                                    <option value="autre">Autre demande</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="jeu" class="form-label">
+                                    <i class="bi bi-controller"></i> Jeu concerné
+                                </label>
+                                <select class="form-select" id="jeu">
+                                    <option value="" selected disabled>Sélectionnez un jeu (optionnel)</option>
+                                    <option value="gta6">GTA VI</option>
+                                    <option value="gtav">GTA V</option>
+                                    <option value="gtaonline">GTA Online</option>
+                                    <option value="rdr2">Red Dead Redemption 2</option>
+                                    <option value="rdronline">Red Dead Online</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="message" class="form-label">
+                                    <i class="bi bi-chat-text"></i> Message
+                                </label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Décrivez votre demande en détail..." required></textarea>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" id="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Je souhaite recevoir la newsletter Rockstar Games
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="conditions" required>
+                                    <label class="form-check-label" for="conditions">
+                                        J'accepte les conditions d'utilisation et la politique de confidentialité
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-or btn-lg w-100">
+                                <i class="bi bi-send-fill"></i> Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-faq">
+        <div class="container">
+            <div class="titre-avec-ligne text-center">
+                <h2 class="titre-section">QUESTIONS FRÉQUENTES</h2>
+                <p class="sous-titre">Trouvez rapidement des réponses à vos questions</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="accordion" id="accordionFaq">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="bi bi-question-circle"></i>
+                                    Quand sort GTA VI ?
+                                </button>
+                            </h3>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    GTA VI est prévu pour sortir en 2025. Restez connectés sur nos réseaux sociaux pour connaître la date exacte de sortie.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="bi bi-question-circle"></i>
+                                    Sur quelles plateformes seront disponibles vos jeux ?
+                                </button>
+                            </h3>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    Nos jeux sont disponibles sur PlayStation 5, Xbox Series X/S et PC. Certains titres sont également disponibles sur les anciennes générations de consoles.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="bi bi-question-circle"></i>
+                                    Comment contacter le support technique ?
+                                </button>
+                            </h3>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    Vous pouvez contacter notre support technique via le formulaire ci-dessus en sélectionnant "Support Technique" comme sujet, ou directement par email à support@rockstargames.com.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="bi bi-question-circle"></i>
+                                    Comment postuler pour un emploi chez Rockstar Games ?
+                                </button>
+                            </h3>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#accordionFaq">
+                                <div class="accordion-body">
+                                    Consultez notre page Carrières pour voir les postes disponibles. Vous pouvez également nous envoyer une candidature spontanée via le formulaire de contact en sélectionnant "Candidature / Emploi".
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <h3 class="footer-logo">
+                        <i class="bi bi-controller"></i> ROCKSTAR GAMES
+                    </h3>
+                    <p class="footer-description">
+                        Créateurs de mondes légendaires depuis 1998. 
+                        Nous repoussons les limites du jeu vidéo.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h4 class="footer-titre">Navigation</h4>
+                    <ul class="footer-liens">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#jeux">Nos Jeux</a></li>
+                        <li><a href="index.html#apropos">A Propos</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <h4 class="footer-titre">Nos Jeux</h4>
+                    <ul class="footer-liens">
+                        <li><a href="#">GTA VI</a></li>
+                        <li><a href="#">GTA V</a></li>
+                        <li><a href="#">RDR 2</a></li>
+                        <li><a href="#">GTA Online</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-4 mb-4">
+                    <h4 class="footer-titre">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="bi bi-geo-alt-fill"></i>
+                            622 Broadway, New York, NY 10012
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope-fill"></i>
+                            contact@rockstargames.com
+                        </li>
+                        <li>
+                            <i class="bi bi-telephone-fill"></i>
+                            +1 (212) 334-6633
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Rockstar Games. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

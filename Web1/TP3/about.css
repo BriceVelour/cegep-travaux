@@ -1,0 +1,84 @@
+.about-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 280px 250px;
+  background-color: #fff;
+}
+
+.about-title-column {
+  flex: 0 0 100px; /* Ajustez la largeur selon vos préférences */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.about-title {
+  font-size: 1rem; /* Ajustez la taille de la police selon vos préférences */
+  font-family: "Merriweather", serif;
+  color: rgb(75, 75, 75);
+}
+
+.about-text-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px; /* Ajustez l'espacement horizontal entre les colonnes */
+  justify-content: center;
+  margin-right: 50px; /* Réduisez cette marge pour rapprocher les colonnes */
+}
+
+.about-text {
+  font-family: "Merriweather", serif;
+  max-width: 450px; /* Limite la largeur du texte */
+  margin: 0 auto; /* Centre la colonne de texte */
+}
+
+.about-text p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 2; /* Augmentez cette valeur pour plus d'espacement entre les lignes */
+}
+
+.about-text blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #333;
+  margin: 20px 0;
+  line-height: 1.8; /* Ajoutez cette ligne pour plus d'espacement */
+}
+
+.more-about-us {
+  display: inline-block;
+  font-size: 1rem;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  margin-top: 20px;
+}
+
+.more-about-us::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 59px;
+  height: 1px;
+  background-color: #000;
+  margin-left: 10px;
+  transform: translateY(-50%);
+}
+
+.about-image-column {
+  flex: 1;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  margin-left: -750px; /* Réduisez cette marge pour rapprocher les colonnes */
+}
+
+.about-image-column img {
+  width: 60%;
+  height: auto;
+  margin-left: 20px;
+}

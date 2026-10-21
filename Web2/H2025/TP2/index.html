@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Navbar Rockstar Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="STYLESHEETS/root.css" />
+    <link rel="stylesheet" href="STYLESHEETS/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand me-3" href="index.html">
+          <!-- Lien vers la page d'accueil -->
+          <img src="IMAGES/DALL·E 2025-03-01 16.43.19 - A stylish and elegant minimalist logo inspired by Rockstar Games, designed with a sleek, professional look. The logo should feature a bold 'R' with a .webp" alt="Rockstar Games Logo" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Games<span class="arrow">▼</span></a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Newswire</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="video.html">Videos</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Downloads</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Store</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+          </ul>
+          <button class="btn btn-yellow me-2">GET LAUNCHER</button>
+          <button class="icon-btn me-2"><i class="bi bi-search"></i></button>
+          <button class="icon-btn"><i class="bi bi-person-circle"></i></button>
+        </div>
+      </div>
+    </nav>
+
+<!-- CAROUSEL SECTION -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="IMAGES/GTA-6-4k-Wallpaper.jpg" class="d-block w-100" alt="Game 1"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>GRAND THEFT AUTO VI</h5>
+        <p> GTA 6: Plongez dans un monde de liberté sans limites et de chaos urbain.</p>
+        <button class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#videoModal1"> Watch Now</button>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="IMAGES/ciudad-de-gta-6-12064.webp" class="d-block w-100" alt="Game 2"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>THE CITY OF THEFT</h5>
+        <p>Entrez dans l'ombre et découvrez les secrets de The City Theft : où chaque coin de rue cache une nouvelle aventure.</p>
+        <button class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#videoModal2"> Watch Now</button>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="IMAGES/red-dead-redemption-2-2023-5k-hw.jpg" class="d-block w-100" alt="Game 3"/>
+      <div class="carousel-caption d-none d-md-block">
+        <h5>RED DEAD REDEMPTION 2</h5>
+        <p>Vivez l'ultime aventure dans l'Ouest sauvage : Red Dead Redemption 2 – entrez dans la légende.</p>
+        <button class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#videoModal3">Watch Now</button>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div id="games-section" class="games-section">
+  <h2>Our Games</h2>
+  <div class="game-card">
+    <img src="IMAGES/DALL·E 2025-03-01 19.10.05 - A stunning and stylish promotional image for Grand Theft Auto VI (GTA VI). The scene features a neon-lit urban environment at night, with high-end spo.webp" alt="GTA VI"/>
+    <div class="game-title">GTA VI</div>
+  </div>
+  <div class="game-card">
+    <img src="IMAGES/DALL·E 2025-03-01 19.11.38 - A stunning and stylish promotional image for Red Dead Redemption 2. The scene features a rugged cowboy with a long coat and hat, standing against a dr.webp" alt="Red Dead Redemption 2"/>
+    <div class="game-title">Red Dead Redemption 2</div>
+  </div>
+  <div class="game-card">
+    <img src="IMAGES/DALL·E 2025-03-01 19.20.46 - A cinematic and stylish promotional image for L.A. Noire. The scene features a detective in a classic 1940s trench coat and fedora, standing under a s.webp" alt="L.A. Noire"/>
+    <div class="game-title">L.A. Noire</div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL 1 -->
+<div class="modal fade" id="videoModal1" tabindex="-1" aria-labelledby="videoModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel1"> GRAND THEFT AUTO VI Trailer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/QdBZY2fkU-0" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL 2 -->
+<div class="modal fade" id="videoModal2" tabindex="-1" aria-labelledby="videoModalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel2">THE CITY OF THEFT Trailer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/XjX8qNCWQNA" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL 3 -->
+<div class="modal fade" id="videoModal3" tabindex="-1" aria-labelledby="videoModalLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel3">RED DEAD REDEMPTION 2 Trailer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/SQHgUnOHFSk" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL 3 -->
+<div class="modal fade" id="videoModal3" tabindex="-1" aria-labelledby="videoModalLabel3" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="videoModalLabel3">RED DEAD REDEMPTION 2 Trailer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/gmA6MrX81z4" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH BOX -->
+<div class="search-box">
+  <input type="text" class="search-input" placeholder="Rechercher..." />
+  <button class="search-btn">Rechercher</button>
+  <button class="close-search-btn icon-btn">
+    <i class="bi bi-x-lg"></i>
+  </button>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Votre email"/>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" placeholder="Votre mot de passe"/>
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe"/>
+            <label class="form-check-label" for="rememberMe">Se souvenir de moi</label>
+          </div>
+          <button type="submit" class="btn btn-yellow w-100">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSWIRE SECTION -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Newswire</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/rockstar-announces-oscar-guzman-flies-8766.webp" class="card-img-top" alt="Newswire 1"/>
+        <div class="card-body">
+          <h5 class="card-title">CircoLoco Records Presents Hiver</h5>
+          <p class="card-text">Dreamachine by CircoLoco Records.</p>
+          <p class="card-text"><small class="text-muted">February 21, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/2ip7x56mevs91.webp" class="card-img-top" alt="Newswire 2"/>
+        <div class="card-body">
+          <h5 class="card-title"> Free Upgrade for Grand Theft Auto V on PC Coming March 4</h5>
+          <p class="card-text">Pre-Load the Free Upgrade Now.</p>
+          <p class="card-text"><small class="text-muted">February 20, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/gta-5-online-gunrunning-bunker-hu.jpg" class="card-img-top" alt="Newswire 3"/>
+        <div class="card-body">
+          <h5 class="card-title"> Roll Back the Years in the New Retro-Styled Vapid Uranus LozSpeed</h5>
+          <p class="card-text"> Explore the classic retro rally car in GTA Online.</p>
+          <p class="card-text"><small class="text-muted">February 20, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/FibLlFFXoAAeU6q.jpg_large" class="card-img-top" alt="Newswire 4"/>
+        <div class="card-body">
+          <h5 class="card-title">New Heist Challenges</h5>
+          <p class="card-text"> Take on the latest heist challenges in GTA Online.</p>
+          <p class="card-text"><small class="text-muted">February 19, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/34957-design-bar-lighting-night-club-neon-lounge-wallpaper-blue-frog.jpg" class="card-img-top" alt="Newswire 5"/>
+        <div class="card-body">
+          <h5 class="card-title">Nightclub Bonuses</h5>
+          <p class="card-text"> Earn double rewards on nightclub activities in GTA Online.</p>
+          <p class="card-text"><small class="text-muted">February 18, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <img src="IMAGES/R.jpg" class="card-img-top" alt="Newswire 6" />
+        <div class="card-body">
+          <h5 class="card-title">Vehicle Discount Week</h5>
+          <p class="card-text"> Enjoy discounts on various vehicles in GTA Online.</p>
+          <p class="card-text"><small class="text-muted">February 17, 2025</small></p>
+          <button class="btn btn-yellow w-100 mt-2">View More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSCRIBE SECTION -->
+<div class="subscribe-section py-5">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        <h2 class="text-white"> Subscribe to the Rockstar Games Email List</h2>
+        <p class="text-white-50"> Sign up for our email newsletter to get info on game announcements and updates, details on special events and offers, and more from Rockstar Games and our affiliates.</p>
+        <button class="btn btn-yellow btn-lg">SUBSCRIBE NOW</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer mt-5 py-4 bg-black text-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 text-center text-md-start">
+        <img src="IMAGES/DALL·E 2025-03-01 16.43.19 - A stylish and elegant minimalist logo inspired by Rockstar Games, designed with a sleek, professional look. The logo should feature a bold 'R' with a .webp" alt="Studio Logo" class="img-fluid" style="width: 120px"/>
+      </div>
+      <div class="col-md-3">
+        <h5>Navigation</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="footer-link">Accueil</a></li>
+          <li><a href="#" class="footer-link">Jeux</a></li>
+          <li><a href="#" class="footer-link">Newswire</a></li>
+          <li><a href="#" class="footer-link">Support</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h5>Suivez-nous</h5>
+        <div class="d-flex">
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="bi bi-discord"></i></a>
+        </div>
+        </div>
+        <div class="col-md-3">
+        <h5>Newsletter</h5>
+        <form>
+            <div class="mb-3"> <input type="email" class="form-control" placeholder="Votre email"/></div>
+            <button class="btn btn-yellow w-100">S'inscrire</button>
+        </form>
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <p class="small"> &copy; 2025 Studio ROCKSTAR GAME | Propulsé par YANNICK BRICE</p>
+    </div>
+    </div>
+    </footer>
+
+    <script src="STYLESHEETS/script.js"></script>
+    </body>
+</html>

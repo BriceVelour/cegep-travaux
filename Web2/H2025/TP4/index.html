@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LYNX+ - Cosmétiques haut de gamme, naturels et innovants">
+    <title>LYNX+ | Beauté Réinventée</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">LYNX+</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvas" aria-controls="navbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvas" aria-labelledby="navbarOffcanvasLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="navbarOffcanvasLabel">LYNX+</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.html">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="produits.html">Produits</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="panier.html">Panier <span id="cart-counter" class="badge rounded-pill bg-gold">0</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Paiement</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Rechercher..." aria-label="Search">
+                            <button class="btn search-btn" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero-carousel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Produit cosmétique naturel">
+                    <div class="carousel-caption">
+                        <h2>Beauté naturelle, technologie essentielle.</h2>
+                        <p>Découvrez notre gamme de produits innovants.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Soins pour la peau">
+                    <div class="carousel-caption">
+                        <h2>Votre éclat, notre savoir-faire.</h2>
+                        <p>Des formules uniques pour sublimer votre beauté.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="d-block w-100" alt="Produits cosmétiques premium">
+                    <div class="carousel-caption">
+                        <h2>LYNX+, chaque détail compte.</h2>
+                        <p>L'excellence au service de votre routine beauté.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="about" class="container my-5">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h2 class="section-title">Notre Philosophie</h2>
+                <div class="separator"></div>
+                <p class="lead">Chez LYNX+, nous croyons que la beauté authentique naît de l'harmonie entre la nature et l'innovation.</p>
+                <p>Fondée sur des principes d'excellence et de respect, notre marque s'engage à créer des produits cosmétiques qui subliment votre beauté naturelle tout en préservant notre planète. Chaque formule est méticuleusement élaborée pour offrir des résultats exceptionnels, avec des ingrédients soigneusement sélectionnés pour leur efficacité et leur pureté.</p>
+                <p>Notre mission est de vous accompagner dans votre quête de beauté avec des produits qui incarnent l'élégance, la performance et la responsabilité. Nous croyons en une beauté qui transcende les tendances éphémères, une beauté qui célèbre votre unicité et révèle votre éclat naturel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured-products" class="container my-5">
+        <h2 class="section-title text-center">Nos Produits Vedettes</h2>
+        <div class="separator mx-auto"></div>
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1617897903246-719242758050?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top rounded-top-4" alt="Shampooing VELVET">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Shampooing VELVET</h3>
+                        <p class="card-text">Un shampooing doux enrichi en protéines de soie et huile d'argan qui nettoie en profondeur tout en préservant l'hydratation naturelle des cheveux.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1601612628452-9e99ced43524?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Brume VITA">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Brume VITA</h3>
+                        <p class="card-text">Une brume hydratante et revitalisante aux extraits de plantes adaptogènes pour rafraîchir et tonifier la peau.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img src="https://images.unsplash.com/photo-1631730359585-38a4935cbec4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Masque SATIN">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Masque SATIN</h3>
+                        <p class="card-text">Un masque capillaire intensif à la kératine et beurre de karité qui répare et nourrit les cheveux secs et abîmés pour une douceur incomparable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="produits.html" class="btn btn-outline-dark">Voir tous nos produits</a>
+        </div>
+    </section>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toast-panier" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check2-circle"></i> Produit ajouté au panier.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-logo">LYNX+</h3>
+                    <p>Beauté réinventée, naturellement luxueuse.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 mb-4">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="panier.html">Panier</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h4>Restez informé</h4>
+                    <p>Inscrivez-vous à notre newsletter pour recevoir nos actualités et offres exclusives.</p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre adresse email" aria-label="Email" aria-describedby="newsletter-submit">
+                            <button class="btn newsletter-btn" type="submit" id="newsletter-submit">S'inscrire</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="copyright">&copy; 2024 LYNX+ Cosmétiques. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="cerveau/cerveau.js"></script>
+</body>
+</html>

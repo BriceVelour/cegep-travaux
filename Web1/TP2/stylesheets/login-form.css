@@ -1,0 +1,118 @@
+.login-header { 
+  text-align: left; 
+  margin-bottom: 30px;
+}
+.login-header h1 { 
+  font-family: "Noto Serif Display", serif; 
+  font-weight: 700; 
+  font-size: 32px; 
+  color: #333; 
+  margin-bottom: 10px;
+}
+.login-header p { 
+  font-size: 14px; 
+  color: #666; 
+  margin-bottom: 5px;
+}
+.login-header a { 
+  font-size: 14px; 
+  color: #007c89; 
+  text-decoration: underline; 
+  display: block;
+}
+.login-header a:hover { 
+  text-decoration: underline;
+}
+label { 
+  display: block; 
+  margin-bottom: 8px; 
+  font-weight: bold; 
+  font-size: 14px; 
+  color: #333; 
+  text-align: left;
+}
+input { 
+  width: 100%; 
+  padding: 10px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 14px;
+}
+input[type="checkbox"] { 
+  margin-right: 8px;
+}
+.stay-logged-in { 
+  display: flex; 
+  align-items: center; 
+  margin-bottom: 20px;
+}
+.stay-logged-in input[type="checkbox"] { 
+  margin-right: 25px; 
+  height: 25px; 
+  width: 25px;
+}
+.stay-logged-in label { 
+  font-size: 17px; 
+  color: #333;
+}
+form { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start;
+}
+.form-group { 
+  width: 100%; 
+  margin-bottom: 20px;
+}
+.password-label { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%;
+}
+.toggle-password { 
+  background: none; 
+  border: none; 
+  color: #007c89; 
+  cursor: pointer; 
+  font-size: 14px; 
+  padding: 0;
+}
+.google-account-text { 
+  text-align: left; 
+  margin-bottom: 10px; 
+  color: #666;
+}
+.google-text { 
+  display: block;
+}
+.links { 
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: nowrap; 
+  width: 100%; 
+  margin-top: 10px;
+}
+.link-item { 
+  text-align: left; 
+  margin-right: 10px; 
+  color: #007c89; 
+  text-decoration: underline; 
+  font-size: 12px; 
+  line-height: 2;
+}
+.link-item:hover { 
+  text-decoration: underline;
+}
+.divider { 
+  border: 0; 
+  height: 2px; 
+  background: #dddddd; 
+  margin: 20px 0; 
+  width: 100%;
+}
+input:focus { 
+  border-color: #007c89; 
+  outline: none;
+}

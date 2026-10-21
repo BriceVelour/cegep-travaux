@@ -1,0 +1,588 @@
+:root {
+  --primary-color: #000; /* Noir */
+  --secondary-color: #daa520; /* Couleur dorée */
+  --text-color: #fff; /* Couleur du texte */
+  --background-color: #fff; /* Couleur de fond */
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.side-menu {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none; /* Retire la bordure */
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menu-toggle .hamburger,
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+  content: "";
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-color);
+  border-radius: 5px;
+  transition: all 0.3s linear;
+  position: relative;
+}
+
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: var(--text-color);
+}
+
+.menu-toggle .hamburger::before {
+  transform: translateY(-8px);
+}
+
+.menu-toggle .hamburger::after {
+  transform: translateY(8px);
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu ul.active {
+  display: block;
+}
+
+.side-menu li {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none; /* Retire la bordure */
+}
+
+.side-menu a {
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  padding: 10px 20px;
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: none; /* Retire la bordure */
+}
+
+.side-menu .bar {
+  display: inline-block;
+  width: 5px;
+  height: 100%;
+  background-color: var(--secondary-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.side-menu a:hover .bar {
+  opacity: 1;
+}
+
+.side-menu a:hover {
+  color: var(--secondary-color);
+  transform: translateX(10px);
+}
+
+.menu-bottom {
+  margin-top: auto;
+  padding: 120px;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-bottom p {
+  color: var(--text-color);
+  margin: 5px 10px;
+  font-size: 17px;
+}
+
+.menu-bottom a {
+  color: var(--text-color);
+  margin: 5px 10px;
+  text-decoration: underline;
+  font-size: 17px;
+}
+
+.menu-bottom a:hover {
+  color: var(--secondary-color);
+}
+
+.social-media {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.social-media i {
+  color: var(--text-color);
+  margin: 0 5px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.social-media i:hover {
+  color: var(--secondary-color);
+}
+
+main {
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.banner {
+  text-align: center;
+  background: url("image-banner.jpg") no-repeat center center/cover;
+  color: var(--text-color);
+  padding: 50px 0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.social-media a {
+  color: var(--text-color);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+/* Styles pour les écrans de taille maximale de 768px (tablettes et mobiles) */
+@media (max-width: 768px) {
+  .side-menu {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-top: 20px;
+  }
+
+  .menu-toggle {
+    display: flex; /* Affiche le bouton hamburger sur les petits écrans */
+  }
+
+  .side-menu ul {
+    display: none; /* Cacher le menu par défaut sur mobile */
+  }
+
+  .side-menu ul.active {
+    display: flex; /* Affiche le menu lorsqu'il est actif */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-menu a {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .banner {
+    padding: 20px;
+  }
+}
+
+/* Styles pour les projets de condos */
+.project-title {
+  text-align: left; /* Aligne le titre à gauche */
+  padding: 40px 20px;
+  background-color: var(--background-color);
+  margin-bottom: 20px;
+}
+
+.project-title h1 {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.project-title h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin: 10px 0 0;
+}
+
+.project-grid {
+  display: flex;
+  flex-direction: column; /* Utilise une seule colonne */
+  align-items: center; /* Centre les éléments dans la colonne */
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.project {
+  width: 80%; /* Ajuste la largeur pour un meilleur affichage */
+  margin-bottom: 20px;
+  background-color: var(--primary-color); /* Fond noir */
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  filter: brightness(100%); /* Enlever la réduction de luminosité */
+}
+
+.project h3 {
+  margin-top: 0;
+  color: var(--text-color); /* Couleur du texte blanche pour contraste */
+}
+
+.project p {
+  margin: 5px 0;
+  color: var(--text-color); /* Couleur du texte blanche pour contraste */
+}
+
+/* Styles pour les écrans de taille maximale de 768px (tablettes et mobiles) */
+@media (max-width: 768px) {
+  .project {
+    width: 100%; /* Utilise toute la largeur disponible pour les petits écrans */
+  }
+}
+
+/* Section du footer avec le logo et le texte */
+.footer-logo {
+  text-align: center;
+  padding: 40px;
+  background-color: #fff;
+  margin-top: 50px;
+  margin-left: 800px;
+}
+
+.footer-logo img {
+  max-width: 200px; /* Ajustez la largeur du logo */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-logo p {
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-text {
+  color: #333;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.footer-text p {
+  margin: 5px 0;
+}
+
+.footer-text a {
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 300px; /* Correspond à la largeur du menu */
+  width: calc(100% - 300px);
+  height: 100%;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Couvre toute la zone sans déformation */
+}
+
+.discover-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: pulsate 2s infinite;
+  z-index: 1; /* Place le bouton au-dessus de la vidéo */
+}
+
+.discover-button:hover {
+  background-color: rgba(0, 0, 0, 1);
+  transform: translateX(-50%) scale(1.1);
+}
+
+@keyframes pulsate {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.05);
+  }
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-media a {
+  margin: 0 10px;
+}
+
+.social-media img {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+}
+
+.social-media img:hover {
+  transform: scale(1.1);
+}
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 300px; /* Correspond à la largeur du menu */
+  background-color: var(--background-color);
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 1300px; /* Correspond à la largeur du menu */
+  background-color: var(--background-color);
+}
+
+.login-container {
+  background-color: #fff;
+  padding: 60px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto; /* Ajouté pour le centrage */
+}
+
+.login-container h1 {
+  font-size: 2.5em; /* Augmenté pour rendre le titre plus grand */
+  margin-bottom: 30px; /* Augmenté pour plus d'espace */
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 25px; /* Augmenté pour plus d'espace */
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px; /* Augmenté pour plus d'espace */
+  color: var(--primary-color);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px; /* Augmenté pour rendre les champs plus grands */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 18px; /* Augmenté pour rendre le texte plus grand */
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 15px 20px; /* Augmenté pour rendre le bouton plus grand */
+  border: none;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  color: #fff;
+  font-size: 18px; /* Augmenté pour rendre le texte du bouton plus grand */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--secondary-color);
+}
+
+.login-container p a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-container p a:hover {
+  color: var(--secondary-color);
+}
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 300px; /* Correspond à la largeur du menu */
+  padding: 20px;
+  background-color: var(--background-color);
+}
+.about-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+.about-container h1,
+.about-container h2 {
+  color: var(--primary-color);
+  margin-bottom: 0px;
+}
+.about-container p {
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 20px;
+}
+.social-media {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-media a {
+  margin: 0 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-media a:hover {
+  transform: scale(1.1);
+  color: var(--secondary-color);
+}
+
+.lucide {
+  width: 24px;
+  height: 24px;
+}

@@ -1,0 +1,28 @@
+import java.util.scanner;
+
+public classe main {
+	public static void main[] arg){
+		scanner scanner = new scanner(system.in);
+		int mainjoueur = 2;
+		int maincroupier =2;
+		sring reponsedujoueur=;
+	
+	system.out.println("Le joueur et le croupier commencent chacun avec deux cartes.")
+	
+	While (true){
+		system.out.println("Le joueur choisir "tirer ou "rester" : ");
+		reponsedujoueur = scanner.nextline();
+	
+		if reponsedujoueur.equalesinogrecase("tirer")){
+		
+			if (maindujoueur > 21){
+			system.out.println("Le joueur dépasse 21. Tu viens de perdre.");
+			break
+			}
+		}else if (reponsedujoueur.equalesinogrecase("rester")){
+		break;
+		}
+	
+	}
+	}
+}

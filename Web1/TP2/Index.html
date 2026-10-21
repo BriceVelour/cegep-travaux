@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Mailchimp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/reset.css" >
+    <link rel="stylesheet" href="stylesheets/reset1.css">
+    <link rel="stylesheet" href="stylesheets/sidebar.css">
+    <link rel="stylesheet" href="stylesheets/misc.css">
+    <link rel="stylesheet" href="stylesheets/login-form.css">
+    <link rel="stylesheet" href="stylesheets/layout.css">
+    <link rel="stylesheet" href="stylesheets/header.css">
+    <link rel="stylesheet" href="stylesheets/footer.css">
+    <link rel="stylesheet" href="stylesheets/buttons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  </head>
+  <body>
+    <div class="sidebar"></div>
+    <header>
+      <img src="IMAGES/OIP.png" alt="Mailchimp Logo" class="logo">
+      <div class="language">
+        <i class="fa-solid fa-globe"></i>
+        <select>
+          <option>Francais</option>
+          <option>English</option>
+          <option>Espanol</option>
+          <option>Portugues</option>
+          <option>Italiano</option>
+          <option>Deutsch</option>
+        </select>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="content-wrapper">
+          <div class="login-header">
+            <h1>Connexion</h1>
+            <p>Vous avez besoin d'un compte Mailchimp ?</p>
+            <a href="https://login.mailchimp.com/signup/">Créez un compte</a>
+          </div>
+          <form>
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur ou adresse e-mail</label>
+              <input type="text" id="username" name="username" required >
+            </div>
+            <div class="form-group">
+              <label for="password" class="password-label">
+                Mot de passe
+                <button type="button" class="toggle-password" aria-label="Afficher le mot de passe">
+                  <i class="fa-solid fa-eye"></i>&nbsp;&nbsp;Afficher
+                </button>
+              </label>
+              <input type="password" id="password" name="password" required >
+            </div>
+            <div class="form-group stay-logged-in">
+              <input type="checkbox" id="stay-logged-in" name="stay-logged-in">
+              <label for="stay-logged-in">Rester connecté</label>
+            </div>
+            <button type="submit">Connexion</button>
+            <div class="form-group links">
+              <a href="https://login.mailchimp.com/login/forgot-username/" class="link-item">Nom d'utilisateur<br>oublié ?</a>
+              <a href="https://login.mailchimp.com/login/forgot/" class="link-item">Mot de passe<br>oublié ?</a>
+              <a href="https://mailchimp.com/fr/help/i-cant-log-in/" class="link-item">Problème de<br>connexion ?</a>
+            </div>
+            <hr class="divider">
+            <p class="google-account-text">
+              Ou, si vous avez créé votre compte Mailchimp avec<br><span class="google-text">Google :</span>
+            </p>
+          </form>
+          <button class="google-login-btn">
+            <img src="IMAGES/20161002001640469_1.png" alt="Google Logo" class="google-logo"> Continuer avec Google
+          </button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        &copy; 2024 Intuit Inc. Tous droits réservés. Mailchimp® est une marque
+        déposée de The Rocket Science Group.
+        <a href="https://cookiepedia.co.uk/giving-consent-to-cookies">Préférences en matière de cookies</a>.
+        <a href="https://www.intuit.com/privacy/statement/fr/">Confidentialité</a> et <a href="https://mailchimp.com/fr/legal/terms/">Conditions générales</a>.
+      </p>
+    </footer>
+  </body>
+</html>

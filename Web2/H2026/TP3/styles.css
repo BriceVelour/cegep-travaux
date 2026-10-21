@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.calculator {
+    background: #2d2d44;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.display {
+    background: #1a1a2e;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.expression {
+    color: #888;
+    font-size: 1.2rem;
+    min-height: 25px;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+}
+
+.result {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    word-break: break-all;
+    text-align: right;
+    width: 100%;
+}
+
+.result.error {
+    color: #ff4757;
+    font-size: 1.8rem;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    gap: 10px;
+}
+
+.btn {
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn.number {
+    background: #3d3d5c;
+    color: #fff;
+}
+
+.btn.number:hover {
+    background: #4d4d6d;
+}
+
+.btn.zero {
+    grid-column: span 1;
+}
+
+.btn.operator {
+    background: #0984e3;
+    color: #fff;
+}
+
+.btn.operator:hover {
+    background: #74b9ff;
+}
+
+.btn.action {
+    background: #636e72;
+    color: #fff;
+}
+
+.btn.action:hover {
+    background: #b2bec3;
+}
+
+.btn.bonus {
+    background: #6c5ce7;
+    color: #fff;
+}
+
+.btn.bonus:hover {
+    background: #a29bfe;
+}
+
+.btn.equals {
+    background: #00b894;
+    color: #fff;
+    grid-row: span 2;
+    height: 150px;
+}
+
+.btn.equals:hover {
+    background: #55efc4;
+}
+
+.btn.integral {
+    background: #fdcb6e;
+    color: #2d3436;
+    font-size: 2rem;
+}
+
+.btn.integral:hover {
+    background: #ffeaa7;
+}
+
+.history-panel {
+    background: #2d2d44;
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    max-height: 500px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3d3d5c;
+}
+
+.history-header h2 {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.btn-clear-history {
+    background: #d63031;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.btn-clear-history:hover {
+    background: #ff7675;
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-entry {
+    background: #1a1a2e;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.history-entry:hover {
+    background: #3d3d5c;
+}
+
+.history-expression {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.history-result {
+    color: #00b894;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.history-empty {
+    color: #636e72;
+    text-align: center;
+    padding: 30px;
+    font-style: italic;
+}
+
+@media (max-width: 700px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .history-panel {
+        width: 100%;
+        max-width: 330px;
+    }
+}

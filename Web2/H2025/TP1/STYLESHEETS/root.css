@@ -1,0 +1,35 @@
+/** 
+ *  Ce fichier n'est pas utilisé en ce moment. C'est à vous de l'inclure dans votre fichier HTML.
+ */
+:root {
+  /**
+     * Voici des variables CSS. 
+     * Bootstrap utilise les variables CSS pour nous permettres de personnaliser ses couleurs.
+     */
+  --bs-primary: #d3e8e1;
+  --bs-primary-rgb: 211, 232, 225;
+
+  --bs-secondary: #98b3e2;
+  --bs-secondary-rgb: 152, 179, 226;
+
+  /**
+     * Voici les variables pour la police d'écriture
+     */
+  --ff-body: "Inter", sans-serif;
+  --ff-heading: "Inter", sans-serif;
+}
+
+body {
+  font-family: var(--ff-body);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-heading);
+  font-weight: 700;
+}

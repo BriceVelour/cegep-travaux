@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistiques d'une classe</title>
+  <!-- Lien vers Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Lien vers la police Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Lien vers le fichier CSS externe -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container my-5">
+    <!-- Titre principal -->
+    <h1 class="text-center mb-4">Statistiques d'une Classe</h1>
+
+    <!-- Section Formulaire -->
+    <div class="card p-4 mb-4">
+      <h2 class="h5 mb-3">Ajouter un étudiant</h2>
+
+      <!-- Section des messages d'erreur -->
+      <div id="errorMessages" class="alert alert-danger d-none" role="alert">
+        <!-- Les messages d'erreur s'afficheront ici -->
+      </div>
+
+      <form id="studentForm">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <input type="text" id="nom" class="form-control" placeholder="Nom de famille" required>
+          </div>
+          <div class="col-md-4">
+            <input type="text" id="prenom" class="form-control" placeholder="Prénom" required>
+          </div>
+          <div class="col-md-4">
+            <input type="number" id="note" class="form-control" placeholder="Note (0 à 100)" min="0" max="100" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3 w-100">
+          <i class="bi bi-plus-circle"></i> Ajouter l'étudiant
+        </button>
+      </form>
+    </div>
+
+    <!-- Section Statistiques -->
+    <div class="card p-4 mb-4">
+      <h2 class="h5 mb-3">Statistiques de la classe</h2>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          📉 Note la plus basse
+          <span class="badge bg-danger rounded-pill" id="minNote">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          📈 Note la plus haute
+          <span class="badge bg-success rounded-pill" id="maxNote">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          📝 Nombre de notes
+          <span class="badge bg-secondary rounded-pill" id="totalNotes">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          ⚖️ Moyenne
+          <span class="badge bg-info rounded-pill" id="average">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          📊 Médiane
+          <span class="badge bg-primary rounded-pill" id="median">-</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          📐 Écart type
+          <span class="badge bg-warning rounded-pill" id="stdDev">-</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tableau des étudiants -->
+    <div class="card p-4">
+      <h2 class="h5 mb-3">Liste des étudiants</h2>
+      <table id="studentsTable" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Nom complet</th>
+            <th>Note</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Les étudiants seront affichés ici -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Lien vers Bootstrap Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+  <!-- Lien vers ton fichier JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>

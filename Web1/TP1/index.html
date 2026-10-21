@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langage de programmation Java</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+</head>
+<body>
+    <div class="left">
+        <img src="images/wikipedia-logo.png" alt="Logo de Wikipédia">
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Portails thématiques</a></li>
+                <li><a href="#">Article au hasard</a></li>
+                <li><a href="#">Contact</a></li>
+                <h3>Contribuer</h3>
+                <li><a href="#">Débuter sur Wikipédia</a></li>
+                <li><a href="#">Communauté</a></li>
+                <li><a href="#">Modifications récentes</a></li>
+                <li><a href="#">Faire un don</a></li>
+                <li><a href="#">Aide</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="right">
+        <h1><strong>Langage de programmation Java</strong></h1>
+        <p><strong>Java</strong> est un langage de programmation de haut niveau orienté objet créé par James Gosling et Patrick Naughton, employés de Sun Microsystems, avec le soutien de Bill Joy (cofondateur de Sun Microsystems en 1982), présenté officiellement le 23 mai 1995 au <em>SunWorld</em>.</p>
+        <p>La société Sun est rachetée en 2009 par la société Oracle qui détient et maintient désormais Java.</p>
+        <p>Un logiciel écrit en language Java a pour particularité d'être compilé vers un code intermédiaire formé de <em>bytecodes</em> qui peut être exécuté dans une machine virtuelle Java (JVM) en faisant abstraction du système d'exploitation.</p>
+        
+        <div class="sommaire-container">
+            <h3 class="sommaire-title">Sommaire</h3>
+            <ol class="sommaire">
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#description">Description</a></li>
+                <li><a href="#langage">Langage</a></li>
+                <li>
+                    <ol>
+                        <li><a href="#syntaxe">Syntaxe</a></li>
+                        <li><a href="#mots-reserves">Mots réservés, primitifs et littéraux</a></li>
+                        <li><a href="#structures-de-controle">Structures de contrôle</a></li>
+                    </ol>
+                </li>
+                <li><a href="#liens-externes">Liens externes</a></li>
+            </ol>
+        </div>
+        
+        <h2 id="introduction">Introduction</h2>
+        <p>Dans le cadre de votre TP #1 pour le cours <em>Web I: Langages de présentation</em>, vous devez reproduire une maquette d'un article ayant un style basé sur Wikipédia.</p>
+        <p>Ce premier travail permet de s'assurer que vous maitriser bien les bases du HTML et du CSS pour reproduire une mise en page HTML en appliquant certains styles CSS.</p>
+
+        <h2 id="description">Description</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur facilisis tempor justo, sit amet venenatis ante consequat eget. Donec ut condimentum tellus, sit amet commodo justo. Nullam elementum congue nibh, eu sollicitudin risus bibendum at. Duis dapibus molestie nibh in congue. Etiam id quam eu eros molestie ullamcorper. In dapibus facilisis purus a porttitor. Pellentesque ac vulputate enim. In tempor euismod elit. Aliquam erat volutpat. Phasellus eleifend porttitor ligula, eu blandit mi. Cras at pellentesque metus, sed sagittis purus. Donec consequat orci sit amet lorem volutpat, non accumsan tellus tempor. Mauris tincidunt lacus ullamcorper nisl eleifend laoreet. Aliquam id sagittis lorem. Nullam vehicula, turpis quis ornare egestas, turpis purus condimentum turpis, sed tempus augue mauris vel enim.</p>
+
+        <h2 id="langage">Langage</h2>
+        <p>Donec suscipit arcu sed eros suscipit viverra. Nulla porta dictum erat in consequat. Mauris eu facilisis nisl, vel fermentum dui.</p>
+
+        <h3 id="syntaxe">Syntaxe</h3>
+        <p>Voici un exemple d'un programme Hello World typique écrit en Java :</p>
+        <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}</code></pre>
+        <h3 id="mots-reserves">Mots réservés, primitifs et littéraux</h3>
+        <pre><code><span>abstract else instanceof static try boolean false
+assert (1.4) enum (5.0) interface strictfp (1.2) volatile byte true
+break extends native super while char
+case final new switch double
+catch finally package synchronized float
+class for private this int
+const (*) goto (*) protected throw long
+continue if public throws short
+default implements return transient void null
+do import</span></code></pre>
+        <ul>
+            <li>(*) ces mots clefs sont réservés mais n'ont pas de signification pour le compilateur (il est juste interdit d'employer ce nom pour une variable par exemple) ;</li>
+            <li>(1.2), (1.4) et (5.0) ces mots clefs ont été ajoutés avec la version indiquée du langage.</li>
+        </ul>
+        <h3 id="structures-de-controle">Structures de contrôle</h3>
+        <p>Bien qu’elles aient toutes un rôle similaire, chaque boucle est pourtant adaptée à une situation :</p>
+        <ul>
+            <li>Structure <strong>tant que</strong> (adaptée pour effectuer des opérations tant qu'une condition est remplie) :</li>
+        </ul>
+        <pre><code>while (&lt;expression booléenne&gt;) {
+    instruction(s)
+}</code></pre>
+        <ul>
+            <li>Structure <strong>faire ... tant</strong> que (comme la structure <strong>tant que</strong> mais la première itération est exécutée quelle que soit la condition, pour les autres itérations la condition doit être remplie) :</li>
+        </ul>
+        <pre><code>do {
+    instruction(s)
+} while (&lt;expression booléenne&gt;);</code></pre>
+        <ul>
+            <li>Structure <strong>pour</strong> (adaptée lorsqu'une collection doit être parcourue en totalité pour traitement) :</li>
+        </ul>
+        <pre><code>for (&lt;initialisation&gt;; &lt;tcondition de poursuite&gt;; &lt;expression d’incrémentation&gt;) {
+    instruction(s)
+}</code></pre>
+
+        <h2 id="liens-externes">Liens externes</h2>
+        <ul>
+            <li><a href="https://www.google.com" target="_blank">Google</a></li>
+            <li><a href="https://www.wikipedia.org" target="_blank">Wikipedia</a></li>
+        </ul>
+        <footer>
+            <p>© Jordan Rioux-Leclair, tous droits réservés</p>
+            <p>Dernière modification de cette page le 19 septembre 2023 à 8:00</p>
+        </footer>
+    </div>
+</body>
+</html>

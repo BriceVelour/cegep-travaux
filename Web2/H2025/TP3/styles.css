@@ -1,0 +1,95 @@
+/* Styles généraux */
+body {
+  background: linear-gradient(to right, #e3f2fd, #f1f8e9); /* Dégradé pastel */
+  font-family: "Poppins", sans-serif;
+  color: #212529; /* Texte gris foncé */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Titres */
+h1,
+h2 {
+  color: #007bff; /* Couleur principale (bleu Bootstrap) */
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Cartes */
+.card {
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Ombre douce */
+  border: none; /* Suppression de la bordure */
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Boutons */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Couleur au survol */
+  transition: background-color 0.3s ease;
+}
+
+/* Tableaux */
+#studentsTable {
+  border-collapse: collapse;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#studentsTable thead {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+}
+
+#studentsTable tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+#studentsTable tbody tr:hover {
+  background-color: #f1f8e9;
+}
+
+#studentsTable tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Badges (Statistiques) */
+.list-group-item span {
+  font-size: 16px;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-weight: bold;
+}
+
+/* Section des messages d'erreur */
+.alert {
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.alert-danger {
+  background-color: #f8d7da; /* Rouge clair */
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-danger p {
+  margin: 0;
+  line-height: 1.6;
+}

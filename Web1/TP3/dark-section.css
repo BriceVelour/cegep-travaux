@@ -1,0 +1,39 @@
+/* dark-section.css */
+.dark-section {
+  background-color: #000;
+  color: #fff;
+  text-align: left; /* Positionner le texte à droite */
+  padding: 450px 20px;
+  font-family: "Merriweather", serif;
+}
+
+.dark-section p {
+  font-size: 2rem; /* Augmenter la taille de la police */
+  line-height: 1.5; /* Ajuster l'espacement entre les lignes */
+  max-width: 900px; /* Définir une largeur maximale pour le paragraphe */
+  margin: 0 50.25rem 0 auto; /* Positionner à droite avec du margin */
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #ccccccbd
+  ); /* Appliquer un dégradé vertical au texte */
+  background-clip: text;
+  color: transparent; /* Rendre le texte transparent pour afficher le dégradé */
+  position: relative;
+}
+
+.dark-section p::before {
+  font-size: 4 rem;
+  position: absolute;
+  top: -30px;
+  left: -50px;
+  color: #aaa; /* Couleur du caractère spécial */
+}
+
+.dark-section p::after {
+  font-size: 4rem;
+  position: absolute;
+  bottom: -30px;
+  right: -50px;
+  color: #aaa; /* Couleur du caractère spécial */
+}

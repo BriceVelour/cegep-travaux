@@ -1,0 +1,51 @@
+/* video.css */
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Hauteur de la section égale à la hauteur de la fenêtre */
+  overflow: hidden;
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%) scale(1.2); /* Centrer et zoomer la vidéo */
+  border: none;
+  z-index: -1; /* Assurez-vous que la vidéo est à l'arrière-plan */
+  object-fit: cover; /* Faire en sorte que la vidéo couvre toute la section */
+  filter: brightness(70%);
+}
+
+.scroll-down-text {
+  position: absolute;
+  bottom: 40px; /* Positionne le texte en bas de la vidéo */
+  left: 50%;
+  transform: translateX(-50%); /* Centre le texte horizontalement */
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.5rem; /* Ajuste la taille du texte */
+  font-family: "Merriweather", serif; /* Utilise une police spéciale */
+  letter-spacing: 0.1rem; /* Ajuste l'espacement des lettres */
+  z-index: 1000; /* Assure que le texte est au-dessus de la vidéo */
+  text-align: center;
+  animation: bounce 2s infinite; /* Animation pour attirer l'attention */
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}

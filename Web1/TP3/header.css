@@ -1,0 +1,65 @@
+/* header.css */
+header {
+  background-color: #000;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 2rem 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.left-menu,
+.right-menu {
+  display: flex;
+  align-items: center;
+}
+
+.left-menu {
+  margin-right: auto;
+}
+
+.right-menu {
+  margin-left: auto;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif; /* Utilisez la police importée */
+  font-size: 0.9rem; /* Ajustez la taille de la police ici */
+  font-weight: 100; /* Ajustez la graisse de la police ici */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajoute une ombre portée */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 13rem; /* Ajustez cette valeur pour la taille souhaitée */
+  height: auto;
+}

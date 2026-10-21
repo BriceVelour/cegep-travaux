@@ -1,0 +1,74 @@
+/* gallery.css */
+.image-gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px; /* Retire l'espacement entre les images */
+  padding: 0; /* Retire l'espacement autour de la galerie */
+  margin: 0;
+  background-color: #000;
+}
+
+.image-container {
+  position: relative;
+  width: calc(33.33%);
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 1000px; /* Augmente la hauteur des images */
+  object-fit: cover;
+  transition: filter 0.3s ease; /* Transition douce pour le filtre de survol */
+  filter: brightness(70%);
+}
+
+.image-text {
+  position: absolute;
+  bottom: 60px; /* Ajustez la position pour laisser de l'espace à "VIEW MORE" */
+  left: 20px;
+  color: white;
+  padding: 10px;
+  text-align: left; /* Aligne le texte à gauche */
+  font-size: 2.5rem; /* Ajustez la taille de la police */
+  font-family: "Merriweather", serif; /* Utilise une police spéciale */
+  letter-spacing: 0.1rem; /* Ajuste l'espacement des lettres pour un style unique */
+  transition: text-decoration 0.3s ease; /* Transition douce pour le soulignement */
+  width: 150%; /* Longueur de la ligne de soulignement */
+}
+
+.view-more {
+  position: absolute;
+  bottom: 1px; /* Positionne "VIEW MORE" en bas de l'image */
+  left: 20px; /* Positionne "VIEW MORE" à gauche */
+  color: white;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  font-family: "Merriweather", serif; /* Utilise une police spéciale */
+  letter-spacing: 0.1rem; /* Ajuste l'espacement des lettres */
+  opacity: 0; /* Masque le texte "VIEW MORE" par défaut */
+  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
+}
+
+.view-more::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 59px;
+  height: 1px;
+  background-color: #fff;
+  margin-left: 10px;
+  transform: translateY(-50%);
+}
+
+.image-container:hover img {
+  filter: brightness(50%); /* Rend l'image plus sombre au survol */
+}
+
+.image-container:hover .image-text {
+  text-decoration: underline; /* Ajoute un soulignement au texte principal au survol */
+}
+
+.image-container:hover .view-more {
+  opacity: 1; /* Affiche le texte "VIEW MORE" au survol */
+}
